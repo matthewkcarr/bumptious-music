@@ -1,0 +1,60 @@
+*, html {
+}
+body {
+  background-color: black;
+  color: white;
+  text-align: center;
+  font-family: "Helvetica", sans-serif;
+
+}
+a, a:visited, a:hover {
+  text-decoration: none;
+  color: white
+}
+a:hover {
+  color: #76EE00;
+}
+#container{
+  text-align: left;
+  width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50em;
+
+}
+#headers {
+}
+.header {
+  float: left;
+  font-size: 25px;
+}
+#header_tnum {
+  min-width: 497px;
+}
+#header_ndown {
+  padding-left: 6px;
+}
+
+.track {
+  padding-bottom: 40px;
+}
+.tinfo {
+  float: left;
+  padding-left: 12px;
+}
+.track_number {
+  min-width: 20px;
+}
+.track_name {
+  min-width: 450px;
+}
+.downloads {
+  min-width: 82px;
+}
+.track_link {
+  min-width: 40px;
+  padding-left: 80px;
+}
+.clear {
+  clear: both;
+}

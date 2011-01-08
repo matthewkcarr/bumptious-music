@@ -1,0 +1,116 @@
+<% content_for :js do-%>
+  <script type="text/javascript">
+
+  function update_counts() {
+    $.getJSON('/home/counts', function(data) {
+      for (var key in data) {
+        if (data.hasOwnProperty(key)) {
+          if(data[key] != null) {
+            var id = '#' + key + '_d';
+            cont = $(id).html();
+            if(cont != data[key]) { 
+              $(id).animate({color: '#D9D919'})
+              $(id).html(data[key]);
+              $(id).animate({color: '#FFFFFF'})
+            }
+          }
+        }
+      }
+    });
+  }
+  $(document).ready(function(){ 
+
+    $('.download').click( function(event) { 
+      var t_id = event.target.id.split('_');
+      $.getJSON('/home/downloaded/' + t_id[0], function(data) {
+        id = '#' + t_id[0] + "_d"
+        $(id).animate({color: '#76EE00'})
+        $(id).html(data.downloads);
+        $(id).animate({color: '#FFFFFF'})
+      });
+    });
+
+    $('.full').click( function(event) { 
+      $.getJSON('/home/downloaded/' + event.target.id, function(data) {
+        update_counts();
+      });
+    });
+
+    var timer = setInterval("update_counts()",9000);
+
+  });
+  </script>
+<% end %>
+
+<div id="page">
+  <div id="dplayer">
+    <object type="application/x-shockwave-flash" data="/swf/dewplayer-playlist.swf" width="240" height="200" id="dewplayer" name="dewplayer">
+    <param name="wmode" value="transparent" />
+    <param name="movie" value="/swf/dewplayer-playlist.swf" />
+    <param name="flashvars" value="showtime=true&autoreplay=true&xml=playlist.xml" />
+    </object>
+  </div>
+
+  <div id="headers">
+    <div class="header" id="header_tnum">
+      Track
+    </div>
+    <div class="header" id="header_ttitle">
+      &nbsp;
+    </div>
+    <div class="header" id="header_ndown">
+      Downloads
+    </div>
+  </div>
+  <div class="clear"></div>
+  <div id="content_info">
+    <% @tracks.each do |track| %>
+      <div class="track">
+        <div class="tinfo track_number">
+        <%= track.id.to_s %>.
+        </div>
+        <div class="tinfo track_name">
+          <span class="name"><%= track.name %></span>
+        </div>
+        <div id="<%= track.id.to_s %>_d" class="tinfo downloads">
+                <%= number_with_delimiter(track.download_count) %> 
+        </div>
+        <div class="tinfo track_link">
+          <a class="download link" id="<%= track.id.to_s %>_l" href="#">download</a>
+        </div>
+      </div>
+      <div class="clear"></div>
+    <% end %>
+  </div>
+  <div id="full_albums">
+    <a href="#" id="all_aac" class="full">aac</a> &nbsp;&nbsp; <a href="#" id="all_mp3" class="full">mp3</a>
+  </div>
+</div>
+
+<script type="text/javascript">
+//<![CDATA[
+/* Replacement calls. Please see documentation for more information. */
+    if(typeof sIFR == "function"){
+
+    // This is the preferred "named argument" syntax
+            sIFR.replaceElement(named({sSelector:".name", sFlashSrc:"/swf/tradegothic.swf", sColor:"#FFFFFF", sHoverColor: '#76EE00', sBgColor:"#000000" }));
+            //sIFR.replaceElement(named({sSelector:".link", sFlashSrc:"/swf/tradegothic.swf", sColor:"#FFFFFF", sBgColor:"#000000" }));
+            sIFR.replaceElement(named({sSelector:".track_number", sFlashSrc:"/swf/tradegothic.swf", sColor:"#FFFFFF", sBgColor:"#000000" }));
+            sIFR.replaceElement(named({sSelector:".header", sFlashSrc:"/swf/tradegothic.swf", sColor:"#FFFFFF", sBgColor:"#000000" }));
+            //sIFR.replaceElement(named({sSelector:"body h1", sFlashSrc:"/swf/tradegothic.swf", sColor:"#000000", sLinkColor:"#000000", sBgColor:"#FFFFFF", sHoverColor:"#CCCCCC", nPaddingTop:20, nPaddingBottom:20, sFlashVars:"textalign=center&offsetTop=6"}));
+    /*
+            sIFR.replaceElement(named({sSelector:"body h1", sFlashSrc:"/swf/tradegothic.swf", sColor:"#000000", sLinkColor:"#000000", sBgColor:"#FFFFFF", sHoverColor:"#CCCCCC", nPaddingTop:20, nPaddingBottom:20, sFlashVars:"textalign=center&offsetTop=6"}));
+
+    // This is the older, ordered syntax
+            sIFR.replaceElement("h5#pullquote", "/swf/tradegothic.swf", "#000000", "#000000", "#FFFFFF", "#FFFFFF", 0, 0, 0, 0);
+            sIFR.replaceElement("blah", "/swf/tradegothic.swf", "#000000", null, null, null, 0, 0, 0, 0);
+            sIFR.replaceElement("h4.subhead", "/swf/tradegothic.swf", "#660000", null, null, null, 0, 0, 0, 0);
+            sIFR.replaceElement("h3.sidebox","/swf/tradegothic.swf","#000000", "#000000", "#DCDCDC", "#DCDCDC", 0, 0, 0, 0, null);
+            sIFR.replaceElement("h3", "/swf/tradegothic.swf", "#000000", null, null, null, 0, 0, 0, 0, null);
+    */
+
+    };
+
+
+//]]>
+</script>

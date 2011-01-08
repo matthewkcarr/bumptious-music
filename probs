@@ -1,0 +1,53 @@
+rake aborted!
+undefined method `more_results' for #<Mysql>
+/opt/local/lib/ruby/gems/1.8/gems/activerecord-3.0.3/lib/active_record/connection_adapters/mysql_adapter.rb:279:in `select_rows'
+/opt/local/lib/ruby/gems/1.8/gems/activerecord-3.0.3/lib/active_record/connection_adapters/abstract/database_statements.rb:27:in `select_values'
+/opt/local/lib/ruby/gems/1.8/gems/activerecord-3.0.3/lib/active_record/migration.rb:454:in `get_all_versions'
+/opt/local/lib/ruby/gems/1.8/gems/activerecord-3.0.3/lib/active_record/migration.rb:583:in `migrated'
+/opt/local/lib/ruby/gems/1.8/gems/activerecord-3.0.3/lib/active_record/migration.rb:492:in `current_version'
+/opt/local/lib/ruby/gems/1.8/gems/activerecord-3.0.3/lib/active_record/migration.rb:509:in `migrate'
+/opt/local/lib/ruby/1.8/mysql.rb:154:in `detect'
+/opt/local/lib/ruby/gems/1.8/gems/activerecord-3.0.3/lib/active_record/migration.rb:509:in `each'
+/opt/local/lib/ruby/gems/1.8/gems/activerecord-3.0.3/lib/active_record/migration.rb:509:in `detect'
+/opt/local/lib/ruby/gems/1.8/gems/activerecord-3.0.3/lib/active_record/migration.rb:509:in `migrate'
+/opt/local/lib/ruby/gems/1.8/gems/activerecord-3.0.3/lib/active_record/migration.rb:433:in `up'
+/opt/local/lib/ruby/gems/1.8/gems/activerecord-3.0.3/lib/active_record/migration.rb:415:in `migrate'
+/opt/local/lib/ruby/gems/1.8/gems/activerecord-3.0.3/lib/active_record/railties/databases.rake:142
+/opt/local/lib/ruby/gems/1.8/gems/rake-0.8.7/lib/rake.rb:636:in `call'
+/opt/local/lib/ruby/gems/1.8/gems/rake-0.8.7/lib/rake.rb:636:in `execute'
+/opt/local/lib/ruby/gems/1.8/gems/rake-0.8.7/lib/rake.rb:631:in `each'
+/opt/local/lib/ruby/gems/1.8/gems/rake-0.8.7/lib/rake.rb:631:in `execute'
+/opt/local/lib/ruby/gems/1.8/gems/rake-0.8.7/lib/rake.rb:597:in `invoke_with_call_chain'
+/opt/local/lib/ruby/1.8/monitor.rb:242:in `synchronize'
+/opt/local/lib/ruby/gems/1.8/gems/rake-0.8.7/lib/rake.rb:590:in `invoke_with_call_chain'
+/opt/local/lib/ruby/gems/1.8/gems/rake-0.8.7/lib/rake.rb:583:in `invoke'
+/opt/local/lib/ruby/gems/1.8/gems/rake-0.8.7/lib/rake.rb:2051:in `invoke_task'
+/opt/local/lib/ruby/gems/1.8/gems/rake-0.8.7/lib/rake.rb:2029:in `top_level'
+/opt/local/lib/ruby/gems/1.8/gems/rake-0.8.7/lib/rake.rb:2029:in `each'
+/opt/local/lib/ruby/gems/1.8/gems/rake-0.8.7/lib/rake.rb:2029:in `top_level'
+/opt/local/lib/ruby/gems/1.8/gems/rake-0.8.7/lib/rake.rb:2068:in `standard_exception_handling'
+/opt/local/lib/ruby/gems/1.8/gems/rake-0.8.7/lib/rake.rb:2023:in `top_level'
+/opt/local/lib/ruby/gems/1.8/gems/rake-0.8.7/lib/rake.rb:2001:in `run'
+/opt/local/lib/ruby/gems/1.8/gems/rake-0.8.7/lib/rake.rb:2068:in `standard_exception_handling'
+/opt/local/lib/ruby/gems/1.8/gems/rake-0.8.7/lib/rake.rb:1998:in `run'
+/opt/local/lib/ruby/gems/1.8/gems/rake-0.8.7/bin/rake:31
+/opt/local/bin/rake:19:in `load'
+/opt/local/bin/rake:19
+
+line edited
+
+NoMethodError: undefined method `more_results' for #<Mysql>
+	from /opt/local/lib/ruby/gems/1.8/gems/activerecord-3.0.3/lib/active_record/connection_adapters/mysql_adapter.rb:625:in `select'
+	from /opt/local/lib/ruby/gems/1.8/gems/activerecord-3.0.3/lib/active_record/connection_adapters/abstract/database_statements.rb:7:in `select_all'
+	from /opt/local/lib/ruby/gems/1.8/gems/activerecord-3.0.3/lib/active_record/connection_adapters/abstract/query_cache.rb:56:in `select_all'
+	from /opt/local/lib/ruby/gems/1.8/gems/activerecord-3.0.3/lib/active_record/base.rb:467:in `find_by_sql'
+	from /opt/local/lib/ruby/gems/1.8/gems/activerecord-3.0.3/lib/active_record/relation.rb:64:in `to_a'
+	from /opt/local/lib/ruby/gems/1.8/gems/activerecord-3.0.3/lib/active_record/relation/finder_methods.rb:333:in `find_first'
+	from /opt/local/lib/ruby/gems/1.8/gems/activerecord-3.0.3/lib/active_record/relation/finder_methods.rb:122:in `first'
+	from /opt/local/lib/ruby/gems/1.8/gems/activerecord-3.0.3/lib/active_record/relation/finder_methods.rb:105:in `send'
+	from /opt/local/lib/ruby/gems/1.8/gems/activerecord-3.0.3/lib/active_record/relation/finder_methods.rb:105:in `find'
+	from /opt/local/lib/ruby/gems/1.8/gems/activerecord-3.0.3/lib/active_record/base.rb:439:in `__send__'
+	from /opt/local/lib/ruby/gems/1.8/gems/activerecord-3.0.3/lib/active_record/base.rb:439:in `find'
+	from (irb):1
+
+line edited
