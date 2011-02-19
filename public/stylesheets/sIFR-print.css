@@ -1,5 +1,7 @@
 /* This is the print stylesheet to hide the Flash headlines from the browser... regular browser text headlines will now print as normal */
-
+.sIFR-root {
+  cursor:pointer;
+}
 .sIFR-flash, .sIFR-flash object, .sIFR-flash embed {
 	display: none !important;
 	height: 0;

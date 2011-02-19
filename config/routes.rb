@@ -48,13 +48,18 @@ Bumptious::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
+  resources :album do 
+    resources :track
+  end
   root :to => "home#index"
 
-  match 'home/downloaded/:id', :to => 'home#downloaded'
-  match 'home/counts', :to => 'home#counts'
+  
+  #match 'home/downloaded/:id', :to => 'home#downloaded'
+  #match 'home/counts', :to => 'home#counts'
+  #match 'home/message_us', :to => 'home#message_us'
   # See how all your routes lay out with "rake routes"
 
   # This is a legacy wild controller route that's not recommended for RESTful applications.
   # Note: This route will make all actions in every controller accessible via GET requests.
-  # match ':controller(/:action(/:id(.:format)))'
+  match ':controller(/:action(/:id(.:format)))'
 end

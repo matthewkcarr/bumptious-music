@@ -1,7 +1,26 @@
 class HomeController < ApplicationController
 
   def index
-    @tracks = Track.all
+    @album = Album.first
+    @tracks = Track.all(:order => 'track_number')
+  end
+
+  def notified 
+    FanEmail.create(:email => params[:notified][:email])
+    respond_to do |format|
+      format.js { render :json => "Great, thanks!"  }
+      format.html { redirect_to "/"}
+    end
+  end
+
+  def message_us 
+    message = params[:message]
+    session[:email] = message[:email]
+    Message.message_us(message).deliver
+    respond_to do |format|
+      format.js { render :json => "Thanks"  }
+      format.html { redirect_to "/"}
+    end
   end
 
   def counts

@@ -1,7 +1,9 @@
-*, html {
+html {
+  background-color: white;
+  background-image:url('/images/background-pattern.png');
+  background-repeat: repeat;
 }
 body {
-  background-color: black;
   color: white;
   text-align: center;
   font-family: "Helvetica", sans-serif;
@@ -14,25 +16,93 @@ a, a:visited, a:hover {
 a:hover {
   color: #76EE00;
 }
+a.purple:hover {
+  color: #d20ad0;
+}
+img {
+  text-decoration: none;
+  border:none;
+}
+.gemstone {
+  font-family: 'GemFontOneRegular';
+}
+.cornerstone {
+  font-family: 'CornerstoneRegular';
+}
+.premi {
+  font-family: 'PremiRegular';
+}
+.agency {
+  font-family: 'AgencyRegular';
+}
+#header_top {
+  text-align: center;
+  padding-bottom: 30px;
+}
+#band_name {
+  font-size: 7.2em;
+}
+#album_name {
+  font-size: 2.91em;
+  padding-left: 24px;
+  letter-spacing: 0.41em;
+}
+#feat_name {
+  text-align: right;
+  padding-right: 87px;
+  font-size: 2.2em;
+}
 #container{
+  background-color: black;
+  text-align: left;
+  margin-left: auto;
+  margin-right: auto;
+  width: 65em;
+
+}
+#page {
+  padding-top: 40px;
+  padding-bottom: 40px;
   text-align: left;
   width: 900px;
   margin-left: auto;
   margin-right: auto;
   width: 50em;
-
+}
+#albums_container {
+  padding-top: 50px;
+  padding-left: 20px;
+}
+#dplayer {
+  padding-top: 20px;
+}
+.page_album {
+  float: left;
+}
+.album_download {
+  min-width: 200px;
+  min-height: 200px;
+}
+#head_seperator {
+    padding-top: 70px;
 }
 #headers {
 }
 .header {
   float: left;
-  font-size: 25px;
+  font-size: 1.3em;
 }
 #header_tnum {
-  min-width: 497px;
+  min-width: 400px;
 }
 #header_ndown {
-  padding-left: 6px;
+  padding-left: 10px;
+}
+#header_types{
+  padding-left: 47px;
+}
+#track_seperator {
+    padding-top: 15px;
 }
 
 .track {
@@ -44,9 +114,10 @@ a:hover {
 }
 .track_number {
   min-width: 20px;
+  text-align:right;
 }
 .track_name {
-  min-width: 450px;
+  min-width: 480px;
 }
 .downloads {
   min-width: 82px;
@@ -57,4 +128,63 @@ a:hover {
 }
 .clear {
   clear: both;
+}
+#page_footer {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+.footer_link {
+  float: left;
+  padding-left: 120px;
+  font-size: 2.0em;
+}
+.fuzz { 
+  position:absolute; 
+  top:0; 
+  left:0; 
+  width:100%; 
+  z-index:100; 
+  background: url('/images/dim.png'); 
+  display:none; 
+  text-align:left; 
+} 
+.msgbox { 
+  z-index:200; 
+}  
+.msgbox img {
+  border:none; 
+  margin:5px;
+}  
+.msgbox_content {
+  padding-left: 112px;
+  padding-right : 112px;
+  padding-bottom: 37px;
+}
+.close{ 
+  top: 0px; 
+  float:right; 
+}  
+.rounded_submit {
+  background-color: #d20ad0;
+}
+.message_us_submit {
+  padding: 6px 16px 6px 16px;
+  float: right;
+  margin-left: 30px;
+}
+.message_us_inputs {
+  width: 280px;
+  border: none;
+}
+#message_us_header {
+  font-size: 25px;
+  padding-left: 30px;
+}
+#notified_header {
+  padding-left: 10px;
+  padding-top: 10px;
+}
+#about_header {
+  padding-left: 15px;
+  padding-top: 15px;
 }

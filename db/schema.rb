@@ -10,7 +10,20 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110108004420) do
+ActiveRecord::Schema.define(:version => 20110219090510) do
+
+  create_table "albums", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "album_number"
+  end
+
+  create_table "fan_emails", :force => true do |t|
+    t.string   "email",      :default => ""
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "tracks", :force => true do |t|
     t.string   "name",           :default => ""
@@ -18,6 +31,8 @@ ActiveRecord::Schema.define(:version => 20110108004420) do
     t.integer  "download_count", :default => 0
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "local_name"
+    t.integer  "track_number"
   end
 
 end

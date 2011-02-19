@@ -1,3 +1,5 @@
+<% content_for :meta do-%>
+<% end  %>
 <% content_for :js do-%>
   <script type="text/javascript">
 
@@ -18,23 +20,94 @@
       }
     });
   }
-  $(document).ready(function(){ 
-
-    $('.download').click( function(event) { 
-      var t_id = event.target.id.split('_');
+  /* used to have onlcick handler that would do this routine */
+  /* but now the link does it */
+  function track_download(obj) {
+      //var t_id = id.split('_');
+      var t_id = $(obj).attr('id').split('_');
       $.getJSON('/home/downloaded/' + t_id[0], function(data) {
         id = '#' + t_id[0] + "_d"
         $(id).animate({color: '#76EE00'})
         $(id).html(data.downloads);
         $(id).animate({color: '#FFFFFF'})
       });
+  }
+  function do_message(btn) {
+    var message = $('#message_us_form').serializeArray();
+    $.post($('#message_us_form').attr('action'), message, function(data){ 
+      var msg = '<div style="padding-top: 25px;">' + data + '</div>';
+      $('#message_us_inputs').html(msg);
+      $('#message_us_header').hide();
+      $('.msgbox').center();
+      $("#message_us_fuzz").fadeOut(3000);  
+    });
+    return false;
+  }
+  function do_notify(btn) {
+    var message = $('#notified_form').serializeArray();
+    $.post($('#notified_form').attr('action'), message, function(data){ 
+      var msg = '<div style="padding-top: 25px;">' + data + '</div>';
+      $('#notified_inputs').html(msg);
+      $('#notified_header').hide();
+      $('#notified_cont').center();
+      $("#notified_fuzz").fadeOut(3000);  
+    });
+    return false;
+  }
+  $(document).ready(function(){ 
+    $("#about_us_link").click(function(){  
+      $("#about_us_fuzz").css("height", $(document).height()); 
+      $("#about_us_fuzz").fadeIn();  
+      $('#about_us_cont').center();
+      return false;  
+    });
+    $("#notified_link").click(function(){  
+      $("#notified_fuzz").css("height", $(document).height()); 
+      $("#notified_fuzz").fadeIn();  
+      $('#notified_cont').center();
+      return false;  
+    });
+    /******************/
+    /* for contact us */
+    $("#message_us_link").click(function(){  
+      $("#message_us_fuzz").css("height", $(document).height()); 
+      $("#message_us_fuzz").fadeIn();  
+      $('#message_us_cont').center();
+      return false;  
+    });  
+    $("#notified_close").click(function(){  
+      $("#notified_fuzz").fadeOut();  
+      return false;  
+    }); 
+    $("#message_us_close").click(function(){  
+      $("#message_us_fuzz").fadeOut();  
+      return false;  
+    }); 
+    $("#about_us_close").click(function(){  
+      $("#about_us_fuzz").fadeOut();  
+      return false;  
+    }); 
+    $(window).resize(function() {
+      $('#message_us_cont').center();
+      $('#notified_cont').center();
+      $('#about_us_cont').center();
+    });
+    $(window).scroll(function() {
+      $('#message_us_cont').center();
+      $('#notified_cont').center();
+      $('#about_us_cont').center();
     });
 
-    $('.full').click( function(event) { 
+    $('#container').corners();
+    $('.rounded').corners();
+    $('.rounded_submit').corners();
+    /*$('.full').click( function(event) { 
       $.getJSON('/home/downloaded/' + event.target.id, function(data) {
         update_counts();
       });
-    });
+    }); */
+    /* for contact us */
+    /******************/
 
     var timer = setInterval("update_counts()",9000);
 
@@ -43,15 +116,37 @@
 <% end %>
 
 <div id="page">
-  <div id="dplayer">
-    <object type="application/x-shockwave-flash" data="/swf/dewplayer-playlist.swf" width="240" height="200" id="dewplayer" name="dewplayer">
-    <param name="wmode" value="transparent" />
-    <param name="movie" value="/swf/dewplayer-playlist.swf" />
-    <param name="flashvars" value="showtime=true&autoreplay=true&xml=playlist.xml" />
-    </object>
+  <div id="header_top">
+    <div id="band_name" class="gemstone">
+      BUMPTIOUS
+    </div>
+    <div id="album_name" class="cornerstone">
+      REMIX ELIXIRS
+    </div>
+    <div id="feat_name" class="agency">
+      Feat. Albyn J.
+    </div>
   </div>
-
-  <div id="headers">
+  <div id="albums_container">
+    <div class="page_album" id="dplayer">
+      <object type="application/x-shockwave-flash" data="/swf/dewplayer-playlist.swf" width="240" height="200" id="dewplayer" name="dewplayer">
+      <param name="wmode" value="transparent" />
+      <param name="movie" value="/swf/dewplayer-playlist.swf" />
+      <param name="flashvars" value="showtime=true&autoreplay=true&xml=playlist.xml" />
+      </object>
+    </div>
+    <div class="page_album album_download">
+      <a href="<%= album_path(@album) + '.m4u' %>" id="all_aac" class="full"><img src="/images/lossless_album.png"></a>
+    </div>
+    <div class="page_album album_download">
+      <a href="<%= album_path(@album) + '.mp3' %>" id="all_mp3" class="full"><img src="/images/mp3_album.png"></a>
+    </div>
+  </div>
+  <div class="clear">
+  </div>
+  <div id="head_seperator">
+  </div>
+  <div id="headers" class="cornerstone">
     <div class="header" id="header_tnum">
       Track
     </div>
@@ -59,58 +154,101 @@
       &nbsp;
     </div>
     <div class="header" id="header_ndown">
-      Downloads
+      Real Time DL Count
+    </div>
+    <div class="header" id="header_types">
     </div>
   </div>
   <div class="clear"></div>
+  <div id="track_seperator">
+  </div>
   <div id="content_info">
     <% @tracks.each do |track| %>
       <div class="track">
-        <div class="tinfo track_number">
-        <%= track.id.to_s %>.
+        <div class="tinfo track_number" class="gemstone">
+        <%= track.track_number.to_s %>.
         </div>
         <div class="tinfo track_name">
-          <span class="name"><%= track.name %></span>
+          <a id="<%= track.id.to_s %>_l" href="<%= album_track_path(@album, track) + '.mp3' %>" class="gemstone"><%= track.name.upcase %></a>
         </div>
-        <div id="<%= track.id.to_s %>_d" class="tinfo downloads">
+        <div id="<%= track.id.to_s %>_d" class="tinfo downloads gemstone">
                 <%= number_with_delimiter(track.download_count) %> 
         </div>
-        <div class="tinfo track_link">
-          <a class="download link" id="<%= track.id.to_s %>_l" href="#">download</a>
+        <div class="tinfo track_link gemstone">
+          <a class="download link" id="<%= track.id.to_s %>_l" href="<%= album_track_path(@album, track) + '.mp3' %>">mp3</a>&nbsp;
+          <a class="download link purple" id="<%= track.id.to_s %>_u" href="<%= album_track_path(@album, track) + '.m4u' %>">m4u</a>
         </div>
       </div>
       <div class="clear"></div>
     <% end %>
   </div>
-  <div id="full_albums">
-    <a href="#" id="all_aac" class="full">aac</a> &nbsp;&nbsp; <a href="#" id="all_mp3" class="full">mp3</a>
+  <div id="page_footer">
+    <div class="footer_link">
+      <a id="notified_link" href="" class="premi" >get notified</a>  
+    </div>  
+    <div class="footer_link">  
+      <a id="message_us_link" href="#" class="premi">message us</a>  
+    </div>  
+    <div class="footer_link">  
+      <a id="about_us_link" href="#" class="premi">about us</a>  
+    </div>  
+  </div>
+</div>
+
+<div id="message_us_fuzz" class="fuzz">  
+  <div id="message_us_cont" style="background-color:#d20ad0; padding:5px" class="msgbox rounded">
+    <div style="background-color:#272727; padding:1px" class="rounded gemstone">
+      <a id="message_us_close" class="close" href="" >close<img src="/images/close.jpg"/></a>  
+      <span id="message_us_header">Send us a quick message</span>
+      <div id="message_us_inputs" class="msgbox_content">
+        <br/>
+        <br/>
+        <%= form_for :message, :html => { :id => 'message_us_form' }, :url => '/home/message_us' do |f| %>
+          Your email (optional): <br/> 
+          <%= f.text_field 'email', :class =>  'message_us_inputs' %>
+          <br/>
+          <br/>
+          Your message for us: <br/>
+          <%= f.text_area 'message', :class => 'message_us_inputs' %><br/>
+          <br/>
+          <%= f.submit 'Message', :value => 'Send', :id => 'message_us_btn', :onclick => 'do_message(this);', :class => 'message_us_submit rounded_submit' %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>  
+
+<div id="notified_fuzz" class="fuzz">  
+  <div id="notified_cont" style="background-color:#d20ad0; padding:5px" class="msgbox rounded">
+    <div style="background-color:#272727; padding:1px" class="rounded gemstone">
+      <a id="notified_close" class="close" href="" >close<img src="close.jpg"/></a>  
+      <div id="notified_header">Get notified about concerts and new albums</div>
+      <div id="notified_inputs" class="msgbox_content">
+        <br/>
+        <br/>
+        <%= form_for :notified, :html => { :id => 'notified_form' }, :url => '/home/notified' do |f| %>
+          Your email: <br/> 
+          <%= f.text_field 'email', :class =>  'message_us_inputs' %><br/>
+          <br/>
+          <%= f.submit 'Message', :value => 'Send', :id => 'notified_btn', :onclick => 'do_notify(this);', :class => 'message_us_submit rounded_submit' %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="about_us_fuzz" class="fuzz">  
+  <div id="about_us_cont" style="background-color:#d20ad0; padding:5px" class="msgbox rounded">
+    <div style="background-color:#272727; padding:1px" class="rounded gemstone">
+      <a id="about_us_close" class="close" href="" >close<img src="close.jpg"/></a>  
+      <div id="about_header">Working on another album as we speak.</div>
+      <div id="about_inputs" class="msgbox_content">
+      </div>
+    </div>
   </div>
 </div>
 
 <script type="text/javascript">
-//<![CDATA[
-/* Replacement calls. Please see documentation for more information. */
-    if(typeof sIFR == "function"){
-
-    // This is the preferred "named argument" syntax
-            sIFR.replaceElement(named({sSelector:".name", sFlashSrc:"/swf/tradegothic.swf", sColor:"#FFFFFF", sHoverColor: '#76EE00', sBgColor:"#000000" }));
-            //sIFR.replaceElement(named({sSelector:".link", sFlashSrc:"/swf/tradegothic.swf", sColor:"#FFFFFF", sBgColor:"#000000" }));
-            sIFR.replaceElement(named({sSelector:".track_number", sFlashSrc:"/swf/tradegothic.swf", sColor:"#FFFFFF", sBgColor:"#000000" }));
-            sIFR.replaceElement(named({sSelector:".header", sFlashSrc:"/swf/tradegothic.swf", sColor:"#FFFFFF", sBgColor:"#000000" }));
-            //sIFR.replaceElement(named({sSelector:"body h1", sFlashSrc:"/swf/tradegothic.swf", sColor:"#000000", sLinkColor:"#000000", sBgColor:"#FFFFFF", sHoverColor:"#CCCCCC", nPaddingTop:20, nPaddingBottom:20, sFlashVars:"textalign=center&offsetTop=6"}));
-    /*
-            sIFR.replaceElement(named({sSelector:"body h1", sFlashSrc:"/swf/tradegothic.swf", sColor:"#000000", sLinkColor:"#000000", sBgColor:"#FFFFFF", sHoverColor:"#CCCCCC", nPaddingTop:20, nPaddingBottom:20, sFlashVars:"textalign=center&offsetTop=6"}));
-
-    // This is the older, ordered syntax
-            sIFR.replaceElement("h5#pullquote", "/swf/tradegothic.swf", "#000000", "#000000", "#FFFFFF", "#FFFFFF", 0, 0, 0, 0);
-            sIFR.replaceElement("blah", "/swf/tradegothic.swf", "#000000", null, null, null, 0, 0, 0, 0);
-            sIFR.replaceElement("h4.subhead", "/swf/tradegothic.swf", "#660000", null, null, null, 0, 0, 0, 0);
-            sIFR.replaceElement("h3.sidebox","/swf/tradegothic.swf","#000000", "#000000", "#DCDCDC", "#DCDCDC", 0, 0, 0, 0, null);
-            sIFR.replaceElement("h3", "/swf/tradegothic.swf", "#000000", null, null, null, 0, 0, 0, 0, null);
-    */
-
-    };
-
-
-//]]>
+  //sIFR.replace(cochin, { selector:".name", css: ['.sIFR-root { cursor:pointer; background-color: #000000; color: #FFFFFF; }'], selectable: true  });
+  //sIFR.replace(rockwell, { selector:".sifr_gothic", css: ['.sIFR-root { cursor:pointer; background-color: #000000; color: #FFFFFF; }'], selectable: true});
 </script>

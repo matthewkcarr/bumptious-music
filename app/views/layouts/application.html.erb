@@ -4,48 +4,49 @@
   <head>
     <title>bumptious remix elixirs</title>
     <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
-    <meta name="title" content="bumptious remix elixirs" />
-    <meta name="description" content="bumptious remix exlixirs by hip hop grime music producer bumptious" />
-    <meta name="keywords" content="music remixes remix bumptious elixirs mp3 m4u aac djs" />
+    <meta name="title" content="bumptious - remix elixirs" />
+    <meta name="description" content="bumptious - remix exlixirs by hip hop & grime music producer bumptious" />
+    <meta name="keywords" content="the best hip hop music ever remixes remix bumptious elixirs mp3 m4u aac djs" />
     <!-- facebook page stuff -->
-    <meta property="og:title" content="bumptious remix elixirs"/>
+    <meta property="og:title" content="Bumptious - Remix Elixirs"/>
     <meta property="og:type" content="album"/>
     <meta property="og:image" content=""/>
     <meta property="og:url" content=""/>
-    <meta property="og:site_name" content="bumptious music"/>
+    <meta property="og:site_name" content="BumptiousMusic.com"/>
     <meta property="fb:admins" content="3614966"/> 
-    <meta property="og:description" content="bumptious remix exlixirs by hip hop grime music producer bumptious"/>
+    <meta property="og:description" content="New Bumptious album remix exlixirs by hip hop grime music producer bumptious - download free"/>
     <meta property="og:audio" content="http://example.com/amazing.mp3" />
-    <meta property="og:audio:title" content="Amazing Song" />
-    <meta property="og:audio:artist" content="Amazing Band" />
-    <meta property="og:audio:album" content="Amazing Album" />
+    <meta property="og:audio:title" content="Bumptious & the Ruff Ryders - Ride or die" />
+    <meta property="og:audio:artist" content="Bumptious" />
+    <meta property="og:audio:album" content="Remix Elixirs" />
     <meta property="og:audio:type" content="application/mp3" />
 
-    <%= stylesheet_link_tag 'all-pages', 'sIFR-screen' %>
-    <%= stylesheet_link_tag 'sIFR-print', :media => 'print' %>
+    <%= stylesheet_link_tag 'fonts', 'all-pages' %>
+    <!-- <%= stylesheet_link_tag 'sifr' %> -->
     <%= yield :css %>
 
     <link rel="stylesheet" media="screen and min-device-pixel-ratio: 0" href="/stylesheets/safari3.css"/>
 
-    <%= javascript_include_tag "jquery-1.4.4.min.js", "jquery.animate-colors-min.js", 'sifr.js', 'sifr-addons.js' %>
+    <%= javascript_include_tag "jquery-1.4.4.min.js", "jquery.animate-colors-min.js", 'jquery.corners.min.js', 'jquery.utils.js' %>
+    <!-- #, 'sifr.js', 'sifr-config.js'  -->
 
 
     <%= yield :js %>
 
-    <% if RAILS_ENV == 'production' %>
-    <script type="text/javascript">
+    <% if Rails.env == 'production' %>
+      <script type="text/javascript">
 
-      var _gaq = _gaq || [];
-      _gaq.push(['_setAccount', 'UA-20619978-1']);
-      _gaq.push(['_trackPageview']);
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-21518750-1']);
+        _gaq.push(['_trackPageview']);
 
-      (function() {
-        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-      })();
+        (function() {
+          var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+          ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+          var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
 
-    </script>
+      </script>
     <% end %>
   </head>
   <body>
