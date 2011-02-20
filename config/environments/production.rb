@@ -47,3 +47,12 @@ Bumptious::Application.configure do
   # Send deprecation notices to registered listeners
   config.active_support.deprecation = :notify
 end
+ActionMailer::Base.delivery_method = :smtp
+ActionMailer::Base.smtp_settings = { :address        => 'smtp.gmail.com',
+                                     :domain         => 'bumptiousmusic.com',
+                                     :port           => 587,
+                                     :user_name => "matt@bumptiousmusic.com",
+                                     :password => "romans825",
+                                     :authentication => :plain,
+                                     :enable_starttls_auto => true
+                                   }
