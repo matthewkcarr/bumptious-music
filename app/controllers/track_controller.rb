@@ -1,7 +1,5 @@
 class TrackController < ApplicationController
   #require 'action_controller/mime_type' 
-  Mime::Type.register 'application/mpeg', :mp3
-  Mime::Type.register 'application/mpeg', :m4u
 
   def show
     @album = Album.find_by_album_number(params[:album_id])
@@ -15,9 +13,9 @@ class TrackController < ApplicationController
         dname = ('Bumptious & ' + @track.name) + '.mp3'
         send_file RAILS_ROOT + '/public/music/'+ @track.local_name + '.mp3', :filename => dname, :type=>"application/force-download"
       }
-      format.m4u {
-        dname = ('Bumptious & ' + @track.name) + '.m4u'
-        send_file RAILS_ROOT + '/public/music/'+ @track.local_name + '.m4u', :filename => dname, :type=>"application/force-download"
+      format.m4a {
+        dname = ('Bumptious & ' + @track.name) + '.m4a'
+        send_file RAILS_ROOT + '/public/music/'+ @track.local_name + '.m4a', :filename => dname, :type=>"application/force-download"
       }
     end
 

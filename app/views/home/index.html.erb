@@ -149,11 +149,11 @@
       </object>
     </div>
     <div class="page_album album_download">
-      <a href="<%= album_path(@album) + '.m4u' %>" id="all_aac" class="full"><img src="/images/lossless_album.png"></a>
+      <a href="<%= album_path(@album) + '_m4a.zip' %>" id="all_aac" class="full"><img src="/images/lossless_album.png"></a>
       <div class="sizer agency">398 MB</div>
     </div>
     <div class="page_album album_download">
-      <a href="<%= album_path(@album) + '.mp3' %>" id="all_mp3" class="full"><img src="/images/mp3_album.png"></a>
+      <a href="<%= album_path(@album) + '_mp3.zip' %>" id="all_mp3" class="full"><img src="/images/mp3_album.png"></a>
       <div class="sizer agency">80 MB</div>
     </div>
   </div>
@@ -191,7 +191,7 @@
         </div>
         <div class="tinfo track_link gemstone">
           <a class="download link" id="<%= track.id.to_s %>_l" href="<%= album_track_path(@album, track) + '.mp3' %>">mp3</a>&nbsp;
-          <a class="download link purple" id="<%= track.id.to_s %>_u" href="<%= album_track_path(@album, track) + '.m4u' %>">m4u</a>
+          <a class="download link purple" id="<%= track.id.to_s %>_u" href="<%= album_track_path(@album, track) + '.m4a' %>">m4a</a>
         </div>
       </div>
       <div class="clear"></div>
