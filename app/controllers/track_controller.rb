@@ -11,6 +11,8 @@ class TrackController < ApplicationController
     respond_to do |format|
       format.mp3 {
         dname = ('Bumptious & ' + @track.name) + '.mp3'
+        file_path = RAILS_ROOT + '/public/music/'+ @track.local_name + '.mp3'
+        puts file_path
         send_file RAILS_ROOT + '/public/music/'+ @track.local_name + '.mp3', :filename => dname, :type=>"application/force-download"
       }
       format.m4a {
