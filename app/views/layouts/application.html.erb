@@ -23,7 +23,19 @@
 
     <%= stylesheet_link_tag 'fonts', 'all-pages' %>
     <!-- <%= stylesheet_link_tag 'sifr' %> -->
-    <link rel="stylesheet" media="screen and min-device-pixel-ratio: 0" type="text/safari" href="/stylesheets/safari3.css"/>
+    <script type="text/javascript">
+        var detect = navigator.userAgent.toLowerCase();
+        if (checkIt('safari')){
+            if(! checkIt('chrome')) {
+              document.write('<link rel="stylesheet" media="screen and min-device-pixel-ratio: 0" href="/stylesheets/safari3.css"/>');
+              alert(detect);
+            }
+        }
+        function checkIt(string){
+            var place = detect.indexOf(string) + 1;
+            return place;
+        }
+    </script>
     <%= yield :css %>
 
     <link rel="SHORTCUT ICON" HREF="/images/favicon.ico"> 
