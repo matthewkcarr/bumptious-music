@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <playlist version="1" xmlns="http://xspf.org/ns/0/">
-    <title>remix elixir</title>
-    <creator>bumptious</creator>
+    <title>Remix Elixirs</title>
+    <creator>Bumptious</creator>
     <link>http://www.bumptiousmusic.com</link>
-    <info>remix elixir</info>
+    <info>Remix Elixirs</info>
     <image></image>
 
     <trackList>
 
         <track>
-          <location>https://s3.amazonaws.com/bumptious/Ruff+Ryders.mp3</location>
+          <location>/music/ruff_ryders.mp3</location>
           <creator>Bumptious</creator>
-          <album>remix elixir</album>
+          <album>Remix Elixirs</album>
           <title>Ruff Ryders - Ride or die </title>
           <annotation></annotation>
           <duration></duration>
@@ -21,131 +21,160 @@
         </track>
         
         <track>
-          <location>mp3/cesaria.mp3</location>
-          <creator>Cesaria Evora</creator>
-          <album>Voz d'Amor (Cesaria Evora)</album>
-          <title>Saia Travada</title>
+          <location>/music/spank_rock.mp3</location>
+          <creator>Bumptious</creator>
+          <album>remix elixirs</album>
+          <title>Spank Rock & Amanda Blank - Bump</title>
           <annotation></annotation>
           <duration></duration>
-          <image>covers/cesaria.jpg</image>
+          <image></image>
           <info></info>
-          <link>http://fr.wikipedia.org/wiki/Cesaria_Evora</link>
+          <link>http://bumptiousmusic.com</link>
+        </track>
+
+        <track>
+          <location>/music/major_lazer.mp3</location>
+          <creator>Bumptious</creator>
+          <album>Remix Elixirs</album>
+          <title>Mr Lexx, Santigold & Major Lazer - Hold the line</title>
+          <annotation></annotation>
+          <duration></duration>
+          <image></image>
+          <info></info>
+          <link>http://bumptiousmusic.com</link>
+        </track>
+
+        <track>
+          <location>/music/saigon.mp3</location>
+          <creator>Bumptious</creator>
+          <album>Remix Elixirs</album>
+          <title>Saigon ft. Albyn J. - Come on baby</title>
+          <annotation></annotation>
+          <duration></duration>
+          <image></image>
+          <info></info>
+          <link>http://bumptiousmusic.com</link>
+        </track>
+
+        <track>
+          <location>/music/phat_kat.mp3</location>
+          <creator>Bumptious</creator>
+          <album>Remix Elixirs</album>
+          <title>Phat Kat ft. Elzhi - Cold Steel</title>
+          <annotation></annotation>
+          <duration></duration>
+          <image></image>
+          <info></info>
+          <link>http://bumptiousmusic.com</link>
+        </track>
+
+        <track>
+          <location>/music/game.mp3</location>
+          <creator>Bumptious</creator>
+          <album>Remix Elixirs</album>
+          <title>Game - Put you on the game</title>
+          <annotation></annotation>
+          <duration></duration>
+          <image></image>
+          <info></info>
+          <link>http://bumptiousmusic.com</link>
+        </track>
+
+        <track>
+          <location>/music/raekwon.mp3</location>
+          <creator>Bumptious</creator>
+          <album>Remix Elixirs</album>
+          <title>Raekwon, ft. Fat Joe & Ghostface Killah - Clientele Kidd</title>
+          <annotation></annotation>
+          <duration></duration>
+          <image></image>
+          <info></info>
+          <link>http://bumptiousmusic.com</link>
+        </track>
+
+        <track>
+          <location>/music/obie_trice.mp3</location>
+          <creator>Bumptious</creator>
+          <album>Remix Elixirs</album>
+          <title>Obie Trice ft. Busta Ryhmes - Oh</title>
+          <annotation></annotation>
+          <duration></duration>
+          <image></image>
+          <info></info>
+          <link>http://bumptiousmusic.com</link>
+        </track>
+
+        <track>
+          <location>/music/slum_village.mp3</location>
+          <creator>Bumptious</creator>
+          <album>Remix Elixirs</album>
+          <title>Slum Village ft. Mc Breed - Do you</title>
+          <annotation></annotation>
+          <duration></duration>
+          <image></image>
+          <info></info>
+          <link>http://bumptiousmusic.com</link>
+        </track>
+
+        <track>
+          <location>/music/young_jeezy.mp3</location>
+          <creator>Bumptious</creator>
+          <album>Remix Elixirs</album>
+          <title>Young Jeezy - 22's or better</title>
+          <annotation></annotation>
+          <duration></duration>
+          <image></image>
+          <info></info>
+          <link>http://bumptiousmusic.com</link>
+        </track>
+
+        <track>
+          <location>/music/stat_quo.mp3</location>
+          <creator>Bumptious</creator>
+          <album>Remix Elixirs</album>
+          <title>Stat Quo - Like dat</title>
+          <annotation></annotation>
+          <duration></duration>
+          <image></image>
+          <info></info>
+          <link>http://bumptiousmusic.com</link>
+        </track>
+
+        <track>
+          <location>/music/slim_thug.mp3</location>
+          <creator>Bumptious</creator>
+          <album>Remix Elixirs</album>
+          <title>Slim Thug - Diamonds</title>
+          <annotation></annotation>
+          <duration></duration>
+          <image></image>
+          <info></info>
+          <link>http://bumptiousmusic.com</link>
+        </track>
+
+        <track>
+          <location>/music/mobb_deep.mp3</location>
+          <creator>Bumptious</creator>
+          <album>Remix Elixirs</album>
+          <title>Mobb deep - Drop a gem on 'em</title>
+          <annotation></annotation>
+          <duration></duration>
+          <image></image>
+          <info></info>
+          <link>http://bumptiousmusic.com</link>
+        </track>
+
+        <track>
+          <location>/music/famlay.mp3</location>
+          <creator>Bumptious</creator>
+          <album>Remix Elixirs</album>
+          <title>Fam Lay ft. Pharrell - Da Beeper</title>
+          <annotation></annotation>
+          <duration></duration>
+          <image></image>
+          <info></info>
+          <link>http://bumptiousmusic.com</link>
         </track>
         
-        <track>
-          <location>mp3/katusha.mp3</location>
-          <creator>Russian Red Army Choir</creator>
-          <album>Best Of</album>
-          <title>Katusha</title>
-          <annotation></annotation>
-          <duration></duration>
-          <image>covers/redarmy.jpg</image>
-          <info></info>
-          <link>http://www.blup.fr/</link>
-        </track>
-        
-        <track>
-          <location>mp3/everywhere.mp3</location>
-          <creator>Michelle Branch</creator>
-          <album>Everywhere</album>
-          <title>Everywhere (Michelle Branch)</title>
-          <annotation></annotation>
-          <duration></duration>
-          <image>covers/everywhere.jpg</image>
-          <link>http://fr.wikipedia.org/wiki/Michelle_Branch</link>
-        </track>
-        
-        <track>
-          <location>mp3/cartographer-caarano.mp3</location>
-          <creator>E.S. Posthumus</creator>
-          <album>Cartographer</album>
-          <title>Caarano</title>
-          <annotation></annotation>
-          <duration></duration>
-          <image>covers/cartographer.jpg</image>
-          <info></info>
-          <link>http://www.esposthumus.com/</link>
-        </track>
-        
-        <track>
-          <location>mp3/cartographer-isunova.mp3</location>
-          <creator>E.S. Posthumus</creator>
-          <album>Cartographer</album>
-          <title>Isunova</title>
-          <annotation></annotation>
-          <duration></duration>
-          <image>covers/cartographer.jpg</image>
-          <info></info>
-          <link>http://www.esposthumus.com/</link>
-        </track>
-        
-        <track>
-          <location>mp3/cartographer-nolitus.mp3</location>
-          <creator>E.S. Posthumus</creator>
-          <album>Cartographer</album>
-          <title>Nolitus</title>
-          <annotation></annotation>
-          <duration></duration>
-          <image>covers/cartographer.jpg</image>
-          <info></info>
-          <link>http://www.esposthumus.com/</link>
-        </track>
-
-        <track>
-          <location>mp3/unearthed-nara.mp3</location>
-          <creator>E.S. Posthumus</creator>
-          <album>Unearthed</album>
-          <title>Nara</title>
-          <annotation></annotation>
-          <duration></duration>
-          <image>covers/unearthed.jpg</image>
-          <info></info>
-          <link>http://www.esposthumus.com/</link>
-        </track>
-
-        <track>
-          <location>mp3/cortex.mp3</location>
-          <creator>Warner Bros</creator>
-          <album>Conquérir le Monde</album>
-          <title>Minus et Cortex</title>
-          <annotation></annotation>
-          <duration></duration>
-          <image>covers/minus.jpg</image>
-          <info></info>
-        </track>
-
-        <track>
-          <location>mp3/hussard.mp3</location>
-          <creator>Jean-Claude Petit</creator>
-          <album>Le Hussard sur le Toit</album>
-          <title>Le Hussard sur le Toit</title>
-          <annotation></annotation>
-          <duration></duration>
-          <image>covers/hussard.jpg</image>
-          <info></info>
-        </track>
-
-        <track>
-          <location>mp3/vinci.mp3</location>
-          <creator>Dan Brown</creator>
-          <album>Da Vinci Code</album>
-          <title>Da Vinci Code</title>
-          <annotation></annotation>
-          <duration></duration>
-          <image>covers/vinci.jpg</image>
-          <info></info>
-        </track>
-
-        <track>
-          <location>mp3/rachmaninov.mp3</location>
-          <creator>Rachmaninov</creator>
-          <album>Piano Concertos</album>
-          <title>Concerto pour Piano (Rachmaninov)</title>
-          <annotation></annotation>
-          <duration></duration>
-          <image>covers/rachma.jpg</image>
-          <info></info>
-        </track>
-
     </trackList>
 </playlist>

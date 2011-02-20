@@ -13,11 +13,11 @@ class AlbumController < ApplicationController
     end
     respond_to do |format|
       format.mp3 {
-        dname = 'Bumptious - Remix Elixirs Album AAC' + '.zip'
+        dname = 'Bumptious - Remix Elixirs Album LOSSLESS M4U' + '.zip'
         send_file RAILS_ROOT + '/public/music/album/remix_elixir_aac.zip', :filename => dname, :type=>"application/force-download"
       }
       format.m4u {
-        dname = 'Bumptious - Remix Elixirs Album MP3' + '.zip'
+        dname = 'Bumptious - Remix Elixirs Album LOSSY MP3' + '.zip'
         send_file RAILS_ROOT + '/public/music/album/remix_elixir_mp3.zip', :filename => dname, :type=>"application/force-download"
       }
     end

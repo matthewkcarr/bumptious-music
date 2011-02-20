@@ -188,3 +188,8 @@ img {
   padding-left: 15px;
   padding-top: 15px;
 }
+#fb_comments_container {
+  padding-top: 30px;
+  padding-bottom: 40px;
+  text-align: center;
+}
