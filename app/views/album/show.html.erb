@@ -1,4 +1,8 @@
-<% content_for :meta do-%>
+<% content_for :artist do-%>
+<%= @artist.upcase %>
+<% end  %>
+<% content_for :album do-%>
+<%= @album_name.upcase %>
 <% end  %>
 <% content_for :js do-%>
   <script type="text/javascript">
@@ -133,7 +137,7 @@
     <div id="band_name" class="gemstone">
       <%= @artist.upcase %>
     </div>
-    <div id="album_name" class="cornerstone">
+    <div id="album_name" class="cornerstone alb_header_<%= @album.album_number %>">
       <%= @album_name.upcase %>
     </div>
     <div id="feat_name" class="agency">
@@ -144,16 +148,16 @@
       <object type="application/x-shockwave-flash" data="/swf/dewplayer-playlist.swf" width="240" height="200" id="dewplayer" name="dewplayer">
       <param name="wmode" value="transparent" />
       <param name="movie" value="/swf/dewplayer-playlist.swf" />
-      <param name="flashvars" value="showtime=true&autoreplay=true&xml=playlist.xml" />
+      <param name="flashvars" value="showtime=true&autoreplay=true&xml=playlist_<%= @album.album_number %>.xml" />
       </object>
     </div>
     <div class="page_album album_download">
       <a href="<%= album_path(@album) + '_m4a.zip' %>" id="all_aac" class="full"><img src="/images/lossless_album.png"></a>
-      <div class="sizer agency">398 MB</div>
+      <div class="sizer agency"><%= @album.m4a_size %> MB</div>
     </div>
     <div class="page_album album_download">
       <a href="<%= album_path(@album) + '_mp3.zip' %>" id="all_mp3" class="full"><img src="/images/mp3_album.png"></a>
-      <div class="sizer agency">80 MB</div>
+      <div class="sizer agency"><%= @album.mp3_size %> MB</div>
     </div>
   </div>
   <div class="clear">
@@ -204,13 +208,16 @@
     </fb:comments>
   </div>
   <div id="page_footer">
-    <div class="footer_link">
+    <div class="footer_link as">
+      <a id="other_link" href="/album#index" class="premi" >other albums</a>  
+    </div>  
+    <div class="footer_link as">
       <a id="notified_link" href="" class="premi" >get notified</a>  
     </div>  
-    <div class="footer_link">  
+    <div class="footer_link as">  
       <a id="message_us_link" href="#" class="premi">message us</a>  
     </div>  
-    <div class="footer_link">  
+    <div class="footer_link as">  
       <a id="about_us_link" href="#" class="premi">about us</a>  
     </div>  
   </div>
@@ -263,14 +270,12 @@
     <div style="background-color:#272727; padding:1px" class="gemstone">
       <a id="about_us_close" class="close" href="" >close</a>  
       <div id="about_header">
-        Praise him with the sound of the trumpet: praise him with the psaltery and harp. <br>
-        Praise him with the timbrel and dance: praise him with stringed instruments and organs.<br> 
-        Praise him up on the loud cymbals: praise him up on the high sounding cymbals. <br>
-        <br>
+        There are only two things worth aiming for, good music and a clean conscience.<br> - Paul Hindemith <br>
       </div>
     </div>
   </div>
 </div>
+
 
 <script type="text/javascript">
   //sIFR.replace(cochin, { selector:".name", css: ['.sIFR-root { cursor:pointer; background-color: #000000; color: #FFFFFF; }'], selectable: true  });

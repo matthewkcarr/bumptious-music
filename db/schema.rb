@@ -10,13 +10,15 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110219090510) do
+ActiveRecord::Schema.define(:version => 20111115043326) do
 
   create_table "albums", :force => true do |t|
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "album_number"
+    t.integer  "mp3_size",     :default => 0
+    t.integer  "m4a_size",     :default => 0
   end
 
   create_table "fan_emails", :force => true do |t|
@@ -26,9 +28,10 @@ ActiveRecord::Schema.define(:version => 20110219090510) do
   end
 
   create_table "tracks", :force => true do |t|
-    t.string   "name",           :default => ""
-    t.integer  "album_id",       :default => 0
-    t.integer  "download_count", :default => 0
+    t.string   "name",             :default => ""
+    t.integer  "album_id",         :default => 0
+    t.integer  "download_count",   :default => 0
+    t.string   "download_referer", :default => ""
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "local_name"

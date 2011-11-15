@@ -44,8 +44,18 @@ img {
 }
 #album_name {
   font-size: 1.81em;
-  padding-left: 13px;
+}
+img.album {
+  max-width: 281px;
+  max-height: 281px;
+}
+.alb_header_main, .alb_header_2 {
+  letter-spacing: 1.11em;
+  padding-left: 35px;
+}
+.alb_header_1 {
   letter-spacing: 0.41em;
+  padding-left: 13px;
 }
 #feat_name {
   text-align: right;
@@ -135,8 +145,13 @@ img {
 }
 .footer_link {
   float: left;
-  padding-left: 120px;
   font-size: 2.0em;
+}
+.as {
+  padding-left: 90px;
+}
+.aa {
+  padding-left: 120px;
 }
 .fuzz { 
   position:absolute; 

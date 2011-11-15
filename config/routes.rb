@@ -51,7 +51,8 @@ Bumptious::Application.routes.draw do
   resources :album do 
     resources :track
   end
-  root :to => "home#index"
+  #root :to => "home#index"
+  root :to => "album#show#1"
 
   
   #match 'home/downloaded/:id', :to => 'home#downloaded'

@@ -1,23 +1,38 @@
 class AlbumController < ApplicationController
 
+  def index
+    @albums = Album.all
+  end
+
   def show
     @album = Album.find_by_album_number(params[:id])
-    @tracks = @album.tracks
-    Track.transaction do
-      @tracks.each do |track|
-        track.download_count = track.download_count + 1
-        track.save
-      end
+    if @album.nil? 
+      @album = Album.first
     end
+    @tracks = @album.tracks
+    vals = @album.name.split('-')
+    @artist = vals[0] || "Artist"
+    @album_name = vals[1] || "Album Name"
     respond_to do |format|
       format.zip {
-        if params[:id].include?('m4a')
-          dname = 'Bumptious - Remix Elixirs Album LOSSLESS M4U' + '.zip'
-          send_file RAILS_ROOT + '/public/music/album/new_m4a.zip', :filename => dname, :type=>"application/force-download"
-        else
-          dname = 'Bumptious - Remix Elixirs Album LOSSY MP3' + '.zip'
-          send_file RAILS_ROOT + '/public/music/album/new_mp3.zip', :filename => dname, :type=>"application/force-download"
+        Track.transaction do
+          @tracks.each do |track|
+            track.download_count = track.download_count + 1
+            track.save
+          end
         end
+        if params[:id].include?('m4a')
+          #dname = 'Bumptious - Remix Elixirs Album LOSSLESS M4U' + '.zip'
+          dname = @album.name + ' Album LOSSLESS M4U.zip'
+          send_file RAILS_ROOT + '/public/music/album/' + @album.album_number + '_m4a.zip', :filename => dname, :type=>"application/force-download"
+        elsif params[:id].include?('mp3')
+          #dname = 'Bumptious - Remix Elixirs Album LOSSY MP3' + '.zip'
+          dname = @album.name + ' Album LOSSY MP3.zip'
+          send_file RAILS_ROOT + '/public/music/album/' + @album.album_number + '_mp3.zip', :filename => dname, :type=>"application/force-download"
+        end
+      }
+      format.any {
+        render 'show'
       }
     end
 

@@ -1,37 +1,12 @@
-<% content_for :meta do-%>
+<% content_for :artist do-%>
+BUMPTIOUS
+<% end  %>
+<% content_for :album do-%>
+REMIX ELIXIRS + MORE
 <% end  %>
 <% content_for :js do-%>
   <script type="text/javascript">
 
-  function update_counts() {
-    $.getJSON('/home/counts', function(data) {
-      for (var key in data) {
-        if (data.hasOwnProperty(key)) {
-          if(data[key] != null) {
-            var id = '#' + key + '_d';
-            cont = $(id).html();
-            if(cont != data[key]) { 
-              $(id).animate({color: '#D9D919'})
-              $(id).html(data[key]);
-              $(id).animate({color: '#FFFFFF'})
-            }
-          }
-        }
-      }
-    });
-  }
-  /* used to have onlcick handler that would do this routine */
-  /* but now the link does it */
-  function track_download(obj) {
-      //var t_id = id.split('_');
-      var t_id = $(obj).attr('id').split('_');
-      $.getJSON('/home/downloaded/' + t_id[0], function(data) {
-        id = '#' + t_id[0] + "_d"
-        $(id).animate({color: '#76EE00'})
-        $(id).html(data.downloads);
-        $(id).animate({color: '#FFFFFF'})
-      });
-  }
   function do_message(btn) {
     var message = $('#message_us_form').serializeArray();
     $.post($('#message_us_form').attr('action'), message, function(data){ 
@@ -55,19 +30,6 @@
     return false;
   }
   $(document).ready(function(){ 
-      window.fbAsyncInit = function() {
-        FB.init({appId: '113311612077067', status: true, cookie: true,
-                 xfbml: true});
-      };
-      (function() {
-        var e = document.createElement('script');
-        e.type = 'text/javascript';
-        e.src = document.location.protocol +
-          '//connect.facebook.net/en_US/all.js';
-        e.async = true;
-        document.getElementById('fb-root').appendChild(e);
-      }());
-
     $("#about_us_link").click(function(){  
       $("#about_us_fuzz").css("height", $(document).height()); 
       $("#about_us_fuzz").fadeIn();  
@@ -114,15 +76,6 @@
     $('#container').corners();
     $('.rounded').corners();
     $('.rounded_submit').corners();
-    /*$('.full').click( function(event) { 
-      $.getJSON('/home/downloaded/' + event.target.id, function(data) {
-        update_counts();
-      });
-    }); */
-    /* for contact us */
-    /******************/
-
-    var timer = setInterval("update_counts()",9000);
 
   });
   </script>
@@ -131,12 +84,13 @@
 <div id="page">
   <div id="header_top">
     <div id="band_name" class="gemstone">
-      <%= @artist.upcase %>
+      BUMPTIOUS
     </div>
-    <div id="album_name" class="cornerstone">
-      <%= @album_name.upcase %>
+    <div id="album_name" class="cornerstone alb_header_main">
+      REMIX ELIXIRS
     </div>
     <div id="feat_name" class="agency">
+      +more
     </div>
   </div>
   <div id="albums_container">
@@ -144,73 +98,42 @@
       <object type="application/x-shockwave-flash" data="/swf/dewplayer-playlist.swf" width="240" height="200" id="dewplayer" name="dewplayer">
       <param name="wmode" value="transparent" />
       <param name="movie" value="/swf/dewplayer-playlist.swf" />
-      <param name="flashvars" value="showtime=true&autoreplay=true&xml=playlist.xml" />
+      <param name="flashvars" value="showtime=true&autoreplay=true&xml=playlist_main.xml" />
       </object>
     </div>
     <div class="page_album album_download">
-      <a href="<%= album_path(@album) + '_m4a.zip' %>" id="all_aac" class="full"><img src="/images/lossless_album.png"></a>
-      <div class="sizer agency">398 MB</div>
+      <a href="/album/2-Bumptious-Remix-Elixirs" id="all_aac" class="full"><img class="album" src="/images/remix_elixirs.png"></a>
+      <div class="sizer agency"></div>
     </div>
     <div class="page_album album_download">
-      <a href="<%= album_path(@album) + '_mp3.zip' %>" id="all_mp3" class="full"><img src="/images/mp3_album.png"></a>
-      <div class="sizer agency">80 MB</div>
+      <a href="/album/1-Bumptious-The-Tares-Destroyer" id="all_mp3" class="full"><img class="album" src="/images/tares_destroyer.png"></a>
+      <div class="sizer agency"></div>
     </div>
   </div>
   <div class="clear">
   </div>
   <div id="head_seperator">
   </div>
-  <div id="headers" class="cornerstone">
-    <div class="header" id="header_tnum">
-      Track
-    </div>
-    <div class="header" id="header_ttitle">
-      &nbsp;
-    </div>
-    <div class="header" id="header_ndown">
-      Real Time DL Count
-    </div>
-    <div class="header" id="header_types">
-    </div>
-  </div>
   <div class="clear"></div>
   <div id="track_seperator">
   </div>
   <div id="content_info">
-    <% @tracks.each do |track| %>
-      <div class="track">
-        <div class="tinfo track_number" class="gemstone">
-        <%= track.track_number.to_s %>.
-        </div>
-        <div class="tinfo track_name">
-          <a id="<%= track.id.to_s %>_l" href="<%= album_track_path(@album, track) + '.mp3' %>" class="gemstone"><%= track.name.upcase %></a>
-        </div>
-        <div id="<%= track.id.to_s %>_d" class="tinfo downloads gemstone">
-                <%= number_with_delimiter(track.download_count) %> 
-        </div>
-        <div class="tinfo track_link gemstone">
-          <a class="download link" id="<%= track.id.to_s %>_l" href="<%= album_track_path(@album, track) + '.mp3' %>">mp3</a>&nbsp;
-          <a class="download link purple" id="<%= track.id.to_s %>_u" href="<%= album_track_path(@album, track) + '.m4a' %>">m4a</a>
-        </div>
-      </div>
-      <div class="clear"></div>
-    <% end %>
   </div>
   <div id="fb_comments_container">
     <div id="fb-root"></div>
     <script src="http://connect.facebook.net/en_US/all.js#appId=113311612077067&amp;xfbml=1">
     </script>
-    <fb:comments xid="album_<%= @album.id %>" numposts="10" width="725" publish_feed="true">
+    <fb:comments xid="album_all" numposts="10" width="725" publish_feed="true">
     </fb:comments>
   </div>
   <div id="page_footer">
-    <div class="footer_link">
+    <div class="footer_link aa">
       <a id="notified_link" href="" class="premi" >get notified</a>  
     </div>  
-    <div class="footer_link">  
+    <div class="footer_link aa">  
       <a id="message_us_link" href="#" class="premi">message us</a>  
     </div>  
-    <div class="footer_link">  
+    <div class="footer_link aa">  
       <a id="about_us_link" href="#" class="premi">about us</a>  
     </div>  
   </div>
@@ -263,14 +186,12 @@
     <div style="background-color:#272727; padding:1px" class="gemstone">
       <a id="about_us_close" class="close" href="" >close</a>  
       <div id="about_header">
-        Praise him with the sound of the trumpet: praise him with the psaltery and harp. <br>
-        Praise him with the timbrel and dance: praise him with stringed instruments and organs.<br> 
-        Praise him up on the loud cymbals: praise him up on the high sounding cymbals. <br>
-        <br>
+        There are only two things worth aiming for, good music and a clean conscience.<br> - Paul Hindemith <br>
       </div>
     </div>
   </div>
 </div>
+
 
 <script type="text/javascript">
   //sIFR.replace(cochin, { selector:".name", css: ['.sIFR-root { cursor:pointer; background-color: #000000; color: #FFFFFF; }'], selectable: true  });
