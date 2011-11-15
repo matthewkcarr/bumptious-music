@@ -24,11 +24,11 @@ class AlbumController < ApplicationController
         if params[:id].include?('m4a')
           #dname = 'Bumptious - Remix Elixirs Album LOSSLESS M4U' + '.zip'
           dname = @album.name + ' Album LOSSLESS M4U.zip'
-          send_file RAILS_ROOT + '/public/music/album/' + @album.album_number + '_m4a.zip', :filename => dname, :type=>"application/force-download"
+          send_file RAILS_ROOT + '/public/music/album/' + @album.album_number.to_s + '_m4a.zip', :filename => dname, :type=>"application/force-download"
         elsif params[:id].include?('mp3')
           #dname = 'Bumptious - Remix Elixirs Album LOSSY MP3' + '.zip'
           dname = @album.name + ' Album LOSSY MP3.zip'
-          send_file RAILS_ROOT + '/public/music/album/' + @album.album_number + '_mp3.zip', :filename => dname, :type=>"application/force-download"
+          send_file RAILS_ROOT + '/public/music/album/' + @album.album_number.to_s + '_mp3.zip', :filename => dname, :type=>"application/force-download"
         end
       }
       format.any {
