@@ -4,6 +4,43 @@
 <% content_for :album do-%>
 <%= @album_name.upcase %>
 <% end  %>
+<% content_for :meta do-%>
+    <% if @album.album_number == 2 %>
+      <meta name="title" content="BUMPTIOUS - REMIX ELIXIRS" />
+      <meta name="description" content="sweet delicious beats" />
+      <meta name="keywords" content="bumptious remix elixirs and the tares destroyer beats mp3 m4u m4a aac djs" />
+      <!-- facebook page stuff -->
+      <meta property="og:title" content="Bumptious - Remix Elixirs"/>
+      <meta property="og:type" content="album"/>
+      <meta property="og:image" content="http://bumptiousmusic.com/images/website.jpg"/>
+      <meta property="og:url" content="http://bumptiousmusic.com/"/>
+      <meta property="og:site_name" content="bumptiousmusic.com"/>
+      <meta property="fb:admins" content="3614966"/> 
+      <meta property="og:description" content="sweet delicious beats - get the albums for free because we love you"/>
+      <meta property="og:audio" content="http://bumptiousmusic.com/music/2/major_lazer.mp3"/>
+      <meta property="og:audio:title" content="Hold the line (3rd track off Remix Elixirs)" />
+      <meta property="og:audio:artist" content="Bumptious" />
+      <meta property="og:audio:album" content="Remix Elixirs" />
+      <meta property="og:audio:type" content="application/mp3" />
+    <% elsif @album.album_number == 1 %>
+      <meta name="title" content="BUMPTIOUS - THE TARES DESTROYER" />
+      <meta name="description" content="sweet delicious beats" />
+      <meta name="keywords" content="bumptious remix elixirs and the tares destroyer beats mp3 m4u m4a aac djs" />
+      <!-- facebook page stuff -->
+      <meta property="og:title" content="Bumptious - The Tares Destroyer"/>
+      <meta property="og:type" content="album"/>
+      <meta property="og:image" content="http://bumptiousmusic.com/images/website.jpg"/>
+      <meta property="og:url" content="http://bumptiousmusic.com/"/>
+      <meta property="og:site_name" content="bumptiousmusic.com"/>
+      <meta property="fb:admins" content="3614966"/> 
+      <meta property="og:description" content="sweet delicious beats - get the albums for free because we love you"/>
+      <meta property="og:audio" content="http://bumptiousmusic.com/music/1/hold_the_line.mp3"/>
+      <meta property="og:audio:title" content="Hold the line (3rd track off The Tares Destroyer)" />
+      <meta property="og:audio:artist" content="Bumptious" />
+      <meta property="og:audio:album" content="The Tares Destroyer" />
+      <meta property="og:audio:type" content="application/mp3" />
+    <% end %>
+<% end %>
 <% content_for :js do-%>
   <script type="text/javascript">
 
