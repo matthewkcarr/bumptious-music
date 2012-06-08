@@ -29,7 +29,6 @@
     <!-- #, 'sifr.js', 'sifr-config.js'  -->
 
 
-    <%= yield :js %>
 
     <% if Rails.env == 'production' %>
       <script type="text/javascript">
@@ -46,6 +45,9 @@
 
       </script>
     <% end %>
+
+    <%= yield :js %>
+
   </head>
   <body>
     <div id="container">

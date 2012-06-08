@@ -165,6 +165,15 @@
 
     var timer = setInterval("update_counts()",9000);
 
+  <% if Rails.env == 'production' %>
+    $('a[href$="mp3"]').click(function() {
+        _gaq.push(['_trackEvent', 'Music Downloads', 'Click', $(this).attr('href')]);
+    });
+    $('a[href$="m4a"]').click(function() {
+        _gaq.push(['_trackEvent', 'Music Downloads', 'Click', $(this).attr('href')]);
+    });
+  <% end %>
+
   });
   </script>
 <% end %>
