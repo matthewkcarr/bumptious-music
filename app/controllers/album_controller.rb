@@ -14,6 +14,9 @@ class AlbumController < ApplicationController
     @artist = vals[0] || "Artist"
     @album_name = vals[1] || "Album Name"
     respond_to do |format|
+      format.html {
+        render :show
+      }
       format.zip {
         Track.transaction do
           @tracks.each do |track|
@@ -31,7 +34,7 @@ class AlbumController < ApplicationController
           send_file RAILS_ROOT + '/public/music/album/' + @album.album_number.to_s + '_mp3.zip', :filename => dname, :type=>"application/force-download"
         end
       }
-      format.any {
+      format.all {
         render :show
       }
     end
