@@ -4,6 +4,10 @@ class AlbumController < ApplicationController
     @albums = Album.all
   end
 
+  def not_found
+    redirect_to Album.find_by_album_number(2), :status => 301
+  end
+
   def show
     @album = Album.find_by_album_number(params[:id])
     if @album.nil? 
