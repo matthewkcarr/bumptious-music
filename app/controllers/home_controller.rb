@@ -16,7 +16,10 @@ class HomeController < ApplicationController
   def message_us 
     message = params[:message]
     session[:email] = message[:email]
-    Message.message_us(message).deliver
+    #begin
+      Message.message_us(message).deliver
+    #rescue
+    #end
     respond_to do |format|
       format.js { render :json => "Thanks"  }
       format.html { redirect_to "/"}

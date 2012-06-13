@@ -18,6 +18,9 @@ class AlbumController < ApplicationController
     @artist = vals[0] || "Artist"
     @album_name = vals[1] || "Album Name"
     respond_to do |format|
+      format.html {
+        render :show
+      }
       format.zip {
         Track.transaction do
           @tracks.each do |track|
@@ -25,18 +28,18 @@ class AlbumController < ApplicationController
             track.save
           end
         end
-        if params[:id].include?('m4a')
+        if params[:id] and params[:id].include?('m4a')
           #dname = 'Bumptious - Remix Elixirs Album LOSSLESS M4U' + '.zip'
           dname = @album.name + ' Album LOSSLESS M4U.zip'
           send_file RAILS_ROOT + '/public/music/album/' + @album.album_number.to_s + '_m4a.zip', :filename => dname, :type=>"application/force-download"
-        elsif params[:id].include?('mp3')
+        elsif params[:id] and params[:id].include?('mp3')
           #dname = 'Bumptious - Remix Elixirs Album LOSSY MP3' + '.zip'
           dname = @album.name + ' Album LOSSY MP3.zip'
           send_file RAILS_ROOT + '/public/music/album/' + @album.album_number.to_s + '_mp3.zip', :filename => dname, :type=>"application/force-download"
         end
       }
-      format.any {
-        render 'show'
+      format.all {
+        render :show
       }
     end
 
