@@ -35,6 +35,9 @@ img {
 .agency {
   font-family: 'AgencyRegular';
 }
+.broadway {
+  font-family: 'BroadwayRegular';
+}
 #header_top {
   text-align: center;
   padding-bottom: 30px;
@@ -94,7 +97,7 @@ img.album {
   min-height: 200px;
 }
 #head_seperator {
-    padding-top: 70px;
+    padding-top: 100px;
 }
 #headers {
 }
@@ -106,7 +109,7 @@ img.album {
   min-width: 400px;
 }
 #header_ndown {
-  padding-left: 10px;
+  padding-left: 87px;
 }
 #header_types{
   padding-left: 47px;
@@ -211,4 +214,41 @@ img.album {
 .sizer {
   padding-top: 20px;
   padding-left: 110px;
+}
+#shbam_container {
+  float: right;
+  width: 500px;
+  padding-left: 30px;
+  padding-top: 20px;
+  height: 230px;
+}
+#broad_sbam {
+  font-size: 14pt;
+  letter-spacing: 0.52em;
+  padding-left: 20px;
+}
+#sbam_btn {
+  cursor: pointer;
+}
+#bam_btn_container {
+  margin-top: 30px;
+}
+#full_record_links {
+  float: left;
+  height: 200px;
+}
+#location_hits {
+  float: right;
+}
+.location {
+  padding-top: 12px;
+  font-size: 16pt;
+  letter-spacing: 0.20em;
+}
+.stats {
+  font-size: 11pt;
+  letter-spacing: 0.20em;
+}
+.loc_highlight {
+  color: #d20ad0;
 }

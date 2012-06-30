@@ -17,6 +17,7 @@ class AlbumController < ApplicationController
     vals = @album.name.split('-')
     @artist = vals[0] || "Artist"
     @album_name = vals[1] || "Album Name"
+    @top_three = FanLocation.top_three
     respond_to do |format|
       format.html {
         render :show

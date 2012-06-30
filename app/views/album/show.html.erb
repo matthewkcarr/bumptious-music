@@ -44,6 +44,20 @@
 <% content_for :js do-%>
   <script type="text/javascript">
 
+  function shbam() {
+    console.log('in shbam')
+    $.getJSON('/unlock/fan_shbam', function(data) {
+      for (var i=0; i < data.length; i++) {
+        if(data[i] != null) {
+          var hash = data[i] ;
+          var subhash = hash.fan_location;
+          console.log(subhash.city);
+          $('#location_' + i).html( subhash.city + ", " + subhash.state);
+          $('#stats_' + i).html( "(x" + subhash.occurences + ") - " + subhash.created);
+        }
+      }
+    });
+  }
   function update_counts() {
     $.getJSON('/home/counts', function(data) {
       for (var key in data) {
@@ -109,6 +123,9 @@
         document.getElementById('fb-root').appendChild(e);
       }());
 
+    $('#sbam_btn').click(function() {
+      shbam();
+    });
     $("#about_us_link").click(function(){  
       $("#about_us_fuzz").css("height", $(document).height()); 
       $("#about_us_fuzz").fadeIn();  
@@ -189,6 +206,7 @@
     <div id="feat_name" class="agency">
     </div>
   </div>
+
   <div id="albums_container">
     <div class="page_album" id="dplayer">
       <object type="application/x-shockwave-flash" data="/swf/dewplayer-playlist.swf" width="240" height="200" id="dewplayer" name="dewplayer">
@@ -197,20 +215,44 @@
       <param name="flashvars" value="showtime=true&autoreplay=true&xml=/playlist_<%= @album.album_number %>.xml" />
       </object>
     </div>
-    <div class="page_album album_download">
-      <a href="<%= album_path(@album) + '_m4a.zip' %>" id="all_aac" class="full"><img src="/images/lossless_album.png"></a>
-      <div class="sizer agency"><%= @album.m4a_size %> MB</div>
+
+    <div id="shbam_container">
+      <div id="broad_sbam" class="broadway">Like what you hear?</div>
+      <div id="bam_btn_container"><img src="/images/sbam_btn.png" id="sbam_btn"></div>
     </div>
-    <div class="page_album album_download">
-      <a href="<%= album_path(@album) + '_mp3.zip' %>" id="all_mp3" class="full"><img src="/images/mp3_album.png"></a>
-      <div class="sizer agency"><%= @album.mp3_size %> MB</div>
+
+    <div class="clear"></div>
+
+    <div id="full_record_links">
+      <div class="page_album album_download">
+        <a href="<%= album_path(@album) + '_m4a.zip' %>" id="all_aac" class="full"><img src="/images/lossless_album.png"></a>
+        <div class="sizer agency"><%= @album.m4a_size %> MB &nbsp;<span class="gemstone">(<%= @album.tracks.size %> tracks)</span></div>
+      </div>
+      <div class="page_album album_download">
+        <a href="<%= album_path(@album) + '_mp3.zip' %>" id="all_mp3" class="full"><img src="/images/mp3_album.png"></a>
+        <div class="sizer agency"><%= @album.mp3_size %> MB &nbsp;<span class="gemstone">(<%= @album.tracks.size %> tracks)</span></div>
+      </div>
+    </div>
+    <div id="location_hits">
+      <p class="broadway">Currently being bumped in:</p>
+      <% i = 0 %>
+      <% @top_three.each do |top| %>
+        <div id="location_0" class="gemstone location <%= "loc_highlight" if i == 0 %>">
+          <%= top.city + ", " + top.state %>
+        </div>
+        <div id="stats_0" class="stats gemstone">
+          <%= "(x" + top.occurences.to_s + ") - " + top.created %>
+        </div>
+        <% i += 1 %>
+      <% end %>
     </div>
   </div>
-  <div class="clear">
-  </div>
+
+  <div class="clear"></div>
+
   <div id="head_seperator">
   </div>
-  <div id="headers" class="cornerstone">
+  <div id="headers" class="broadway">
     <div class="header" id="header_tnum">
       Track
     </div>
@@ -218,7 +260,7 @@
       &nbsp;
     </div>
     <div class="header" id="header_ndown">
-      Real Time DL Count
+     DL Count
     </div>
     <div class="header" id="header_types">
     </div>

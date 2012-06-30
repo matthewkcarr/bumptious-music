@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111115043326) do
+ActiveRecord::Schema.define(:version => 20120630033421) do
 
   create_table "albums", :force => true do |t|
     t.string   "name"
@@ -26,6 +26,18 @@ ActiveRecord::Schema.define(:version => 20111115043326) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "fan_locations", :force => true do |t|
+    t.string   "ip_address",   :default => "", :null => false
+    t.string   "city",         :default => ""
+    t.string   "state",        :default => ""
+    t.string   "country_code", :default => ""
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "fan_locations", ["city", "state"], :name => "index_fan_locations_on_city_and_state"
+  add_index "fan_locations", ["state", "country_code"], :name => "index_fan_locations_on_state_and_country_code"
 
   create_table "tracks", :force => true do |t|
     t.string   "name",             :default => ""
