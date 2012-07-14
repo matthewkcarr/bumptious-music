@@ -1,5 +1,11 @@
 class UnlockController < ApplicationController
   
+  def fivemore 
+    respond_to do |format|
+      format.js 
+    end
+  end
+
   def fan_shbam
     ip = request.remote_ip || "127.0.0.1"
     ip = "24.23.6.223" if ip == "127.0.0.1"
@@ -9,7 +15,6 @@ class UnlockController < ApplicationController
     @top_three = FanLocation.top_three
     ret = Array.new
     i = 0
-    y @top_three
     @top_three.each do |top| 
       ret[i] = top
       i = i + 1

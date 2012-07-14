@@ -44,19 +44,27 @@
 <% content_for :js do-%>
   <script type="text/javascript">
 
+  $(function(){
+      $('#myGallery').galleryView();
+  });
+
   function shbam() {
-    console.log('in shbam')
     $.getJSON('/unlock/fan_shbam', function(data) {
       for (var i=0; i < data.length; i++) {
         if(data[i] != null) {
           var hash = data[i] ;
           var subhash = hash.fan_location;
-          console.log(subhash.city);
           $('#location_' + i).html( subhash.city + ", " + subhash.state);
-          $('#stats_' + i).html( "(x" + subhash.occurences + ") - " + subhash.created);
+          $('#stats_' + i).html( "(x" + subhash.occurences + ") - " + subhash.updated);
         }
       }
     });
+    console.log('calling unlock')
+    $.get('/unlock/fivemore', function(data) {
+      $('#shbam_container').html('');
+      $('#shbam_container').append(data);
+    }, "js");
+    console.log('done unlock')
   }
   function update_counts() {
     $.getJSON('/home/counts', function(data) {
@@ -241,7 +249,7 @@
           <%= top.city + ", " + top.state %>
         </div>
         <div id="stats_0" class="stats gemstone">
-          <%= "(x" + top.occurences.to_s + ") - " + top.created %>
+          <%= "(x" + top.occurences.to_s + ") - " + top.updated %>
         </div>
         <% i += 1 %>
       <% end %>
@@ -288,13 +296,11 @@
       <div class="clear"></div>
     <% end %>
   </div>
-  <div id="fb_comments_container">
-    <div id="fb-root"></div>
-    <script src="http://connect.facebook.net/en_US/all.js#appId=113311612077067&amp;xfbml=1">
-    </script>
-    <fb:comments colorscheme="dark" migrated="1" href="<%= album_url( @album ) %>" xid="album_<%= @album.album_number %>" numposts="10" width="725" publish_feed="true">
-    </fb:comments>
-  </div>
+  <ul id="myGallery">
+        <% for artpic in AlbumController::ART_PICS %>
+            <li><img src="/images/greeceart/<%= artpic %>" alt="<%= artpic %>" /></li>
+        <% end %>
+  </ul>
   <div id="page_footer">
     <div class="footer_link as">
       <a id="other_link" href="/album#index" class="premi" >other albums</a>  
@@ -308,6 +314,13 @@
     <div class="footer_link as">  
       <a id="about_us_link" href="#" class="premi">about us</a>  
     </div>  
+  </div>
+  <div id="fb_comments_container">
+    <div id="fb-root"></div>
+    <script src="http://connect.facebook.net/en_US/all.js#appId=113311612077067&amp;xfbml=1">
+    </script>
+    <fb:comments colorscheme="dark" migrated="1" href="<%= album_url( @album ) %>" xid="album_<%= @album.album_number %>" numposts="10" width="725" publish_feed="true">
+    </fb:comments>
   </div>
 </div>
 
