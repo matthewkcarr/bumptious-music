@@ -48,7 +48,15 @@
       $('#myGallery').galleryView();
   });
 
+  function five_email() {
+      $("#five_fuzz").css("height", $(document).height()); 
+      $("#five_fuzz").fadeIn();  
+      $('#five_cont').center();
+  }
+
   function shbam() {
+    $('#shbam_container').html('');
+    $('#shbam_container').append( $('#preload').html() );
     $.getJSON('/unlock/fan_shbam', function(data) {
       for (var i=0; i < data.length; i++) {
         if(data[i] != null) {
@@ -59,12 +67,23 @@
         }
       }
     });
-    console.log('calling unlock')
-    $.get('/unlock/fivemore', function(data) {
-      $('#shbam_container').html('');
-      $('#shbam_container').append(data);
-    }, "js");
-    console.log('done unlock')
+    $.getJSON('/unlock/new_fan_shbam', function(data) {
+      for (var i=0; i < data.length; i++) {
+        if(data[i] != null) {
+          var hash = data[i] ;
+          var subhash = hash.fan_location;
+          $('#nlocation_' + i).html( subhash.city + ", " + subhash.state);
+          $('#nstats_' + i).html( "(x" + subhash.occurences + ") - " + subhash.updated);
+        }
+      }
+    });
+    /*$.ajax( {
+           url: '/unlock/fivemore', 
+           complete: function(data) { 
+                      $('head').append(data);
+                    }
+          });
+          */
   }
   function update_counts() {
     $.getJSON('/home/counts', function(data) {
@@ -117,6 +136,8 @@
     });
     return false;
   }
+
+
   $(document).ready(function(){ 
       window.fbAsyncInit = function() {
         FB.init({appId: '113311612077067', status: true, cookie: true,
@@ -133,7 +154,12 @@
 
     $('#sbam_btn').click(function() {
       shbam();
+      $('#five_btn').click(function(event) {
+        five_email(event.target);
+      });
     });
+
+
     $("#about_us_link").click(function(){  
       $("#about_us_fuzz").css("height", $(document).height()); 
       $("#about_us_fuzz").fadeIn();  
@@ -154,6 +180,10 @@
       $('#message_us_cont').center();
       return false;  
     });  
+    $("#five_close").click(function(){  
+      $("#five_fuzz").fadeOut();  
+      return false;  
+    }); 
     $("#notified_close").click(function(){  
       $("#notified_fuzz").fadeOut();  
       return false;  
@@ -177,9 +207,6 @@
       $('#about_us_cont').center();
     });
 
-    $('#container').corners();
-    $('.rounded').corners();
-    $('.rounded_submit').corners();
     /*$('.full').click( function(event) { 
       $.getJSON('/home/downloaded/' + event.target.id, function(data) {
         update_counts();
@@ -244,12 +271,12 @@
     <div id="location_hits">
       <p class="broadway">Currently being bumped in:</p>
       <% i = 0 %>
-      <% @top_three.each do |top| %>
-        <div id="location_0" class="gemstone location <%= "loc_highlight" if i == 0 %>">
-          <%= top.city + ", " + top.state %>
+      <% for newest in @newest_three %>
+        <div id="nlocation_0" class="gemstone location <%= "loc_highlight" if i == 0 %>">
+          <%= newest.city + ", " + newest.state %>
         </div>
-        <div id="stats_0" class="stats gemstone">
-          <%= "(x" + top.occurences.to_s + ") - " + top.updated %>
+        <div id="nstats_0" class="stats gemstone">
+          <%= "(x" + newest.occurences.to_s + ") - " + newest.updated %>
         </div>
         <% i += 1 %>
       <% end %>
@@ -298,9 +325,23 @@
   </div>
   <ul id="myGallery">
         <% for artpic in AlbumController::ART_PICS %>
-            <li><img src="/images/greeceart/<%= artpic %>" alt="<%= artpic %>" /></li>
+            <li><img src="https://s3.amazonaws.com/bumptious/<%= artpic %>" alt="<%= artpic %>" /></li>
         <% end %>
   </ul>
+
+  <div id="city_leaderboard">
+    <% i = 0 %>
+    <% for top in @top_three %>
+      <div id="location_0" class="gemstone location <%= "loc_highlight" if i == 0 %>">
+        <%= top.city + ", " + top.state %>
+      </div>
+      <div id="stats_0" class="stats gemstone">
+        <%= "(x" + top.occurences.to_s + ") - " + top.updated %>
+      </div>
+      <% i += 1 %>
+    <% end %>
+  </div>
+
   <div id="page_footer">
     <div class="footer_link as">
       <a id="other_link" href="/album#index" class="premi" >other albums</a>  
@@ -317,8 +358,6 @@
   </div>
   <div id="fb_comments_container">
     <div id="fb-root"></div>
-    <script src="http://connect.facebook.net/en_US/all.js#appId=113311612077067&amp;xfbml=1">
-    </script>
     <fb:comments colorscheme="dark" migrated="1" href="<%= album_url( @album ) %>" xid="album_<%= @album.album_number %>" numposts="10" width="725" publish_feed="true">
     </fb:comments>
   </div>
@@ -376,13 +415,21 @@
         <br>You can download the project and make it your own at
         <br><a href="https://github.com/bikokid">https://github.com/bikokid</a>
         <br>
+        <br>
       </div>
     </div>
   </div>
 </div>
 
+<div id="five_fuzz" class="fuzz">  
+  <div id="five_cont" style="background-color:#d20ad0; padding:5px" class="msgbox rounded">
+    <div style="background-color:#272727; padding:1px" class="gemstone">
+      <%= render :partial => 'unlock/form' %>
+    </div>
+  </div>
+</div>
 
-<script type="text/javascript">
-  //sIFR.replace(cochin, { selector:".name", css: ['.sIFR-root { cursor:pointer; background-color: #000000; color: #FFFFFF; }'], selectable: true  });
-  //sIFR.replace(rockwell, { selector:".sifr_gothic", css: ['.sIFR-root { cursor:pointer; background-color: #000000; color: #FFFFFF; }'], selectable: true});
-</script>
+<div id="preload">
+  <%= render :partial => 'unlock/fivemore' %>
+</div>
+

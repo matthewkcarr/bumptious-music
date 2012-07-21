@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120630033421) do
+ActiveRecord::Schema.define(:version => 20120715230014) do
 
   create_table "albums", :force => true do |t|
     t.string   "name"
@@ -19,6 +19,16 @@ ActiveRecord::Schema.define(:version => 20120630033421) do
     t.integer  "album_number"
     t.integer  "mp3_size",     :default => 0
     t.integer  "m4a_size",     :default => 0
+  end
+
+  create_table "extracks_emails", :force => true do |t|
+    t.string   "email",      :default => ""
+    t.string   "link_hash",  :default => "0"
+    t.string   "mp3_hash",   :default => "0"
+    t.integer  "visited_by", :default => 0
+    t.string   "origin_ip",  :default => "0"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "fan_emails", :force => true do |t|
@@ -48,6 +58,16 @@ ActiveRecord::Schema.define(:version => 20120630033421) do
     t.datetime "updated_at"
     t.string   "local_name"
     t.integer  "track_number"
+  end
+
+  create_table "tracks_email", :force => true do |t|
+    t.string   "email",      :default => ""
+    t.string   "link_hash",  :default => "0"
+    t.string   "mp3_hash",   :default => "0"
+    t.integer  "visited_by", :default => 0
+    t.string   "origin_ip",  :default => "0"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
 end

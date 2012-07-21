@@ -71,6 +71,9 @@ img.album {
   margin-left: auto;
   margin-right: auto;
   width: 65em;
+  -webkit-border-radius: 15px;
+  -moz-border-radius: 15px;
+  border-radius: 15px;
 
 }
 #page {
@@ -143,8 +146,8 @@ img.album {
   clear: both;
 }
 #page_footer {
-  padding-top: 20px;
-  padding-bottom: 20px;
+  padding-top: 40px;
+  padding-bottom: 40px;
 }
 .footer_link {
   float: left;
@@ -184,6 +187,14 @@ img.album {
 }  
 .rounded_submit {
   background-color: #d20ad0;
+  -webkit-border-radius: 15px;
+  -moz-border-radius: 15px;
+  border-radius: 15px;
+}
+.rounded {
+  -webkit-border-radius: 15px;
+  -moz-border-radius: 15px;
+  border-radius: 15px;
 }
 .message_us_submit {
   padding: 6px 16px 6px 16px;
@@ -251,4 +262,31 @@ img.album {
 }
 .loc_highlight {
   color: #d20ad0;
+}
+#content_info {
+  padding-bottom: 43px;
+}
+#want {
+  font-size: 13pt;
+  letter-spacing: 0.13em;
+}
+#spec {
+  padding-top: 20px;
+  font-size: 13pt;
+  letter-spacing: 0.13em;
+}
+#preload {
+  display: none;
+}
+#five_btn {
+  cursor: pointer;
+}
+#five_exp {
+  width: 400px;
+  margin: 0 auto;
+  padding: 25px 40px;
+}
+#five_form {
+  width: 400px;
+  margin: 0 auto;
 }
