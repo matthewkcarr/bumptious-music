@@ -1,0 +1,7 @@
+$('#five_cont').html('');
+$('#five_cont').append('<%= escape_javascript( render :partial => 'unlock/form') %>');
+$('#five_cont').center();
+$('#ext_sendemail_btn').click( function() {
+  send_email_for_tracks(this);
+  return false;
+});
