@@ -100,7 +100,7 @@ img.album {
   min-height: 200px;
 }
 #head_seperator {
-    padding-top: 100px;
+    padding-top: 140px;
 }
 #headers {
 }
@@ -217,6 +217,10 @@ img.album {
   padding-left: 15px;
   padding-top: 15px;
 }
+#about_content {
+  width: 300px;
+  margin: 0 auto;
+}
 #fb_comments_container {
   padding-top: 30px;
   padding-bottom: 40px;
@@ -287,6 +291,42 @@ img.album {
   padding: 25px 40px;
 }
 #five_form {
-  width: 400px;
+  width: 300px;
   margin: 0 auto;
+  text-align: right;
+}
+#city_leaderboard {
+  padding-top: 0px;
+  padding-bottom: 80px;
+  width: 800px;;
+  margin: 0 auto;
+}
+.ccont {
+  float: left;
+  padding-right: 20px;
+  width: 245px;
+  display: block;
+  text-align: right;
+}
+.cstats {
+  display: inline;
+}
+.clocation {
+  display: inline;
+}
+form input[type="text"] {
+  -webkit-border-radius: 8px;
+  -moz-border-radius: 8px;
+  border-radius: 8px;
+  height: 25px;
+  font-size: 12pt;
+}
+form textarea {
+  -webkit-border-radius: 8px;
+  -moz-border-radius: 8px;
+  border-radius: 8px;
+}
+form input:focus {
+  border: 3px solid #d20ad0;
+  outline: none; 
 }

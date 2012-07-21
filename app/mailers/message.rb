@@ -13,4 +13,11 @@ class Message < ActionMailer::Base
      subject    "A fan sent you a message"
      body       :content => data
   end
+
+  def unlocked(data)
+     recipients 'bikokid@gmail.com'
+     from       "bikokid@gmail.com"
+     subject    "Five tracks have been unlocked"
+     body       :content => data
+  end
 end

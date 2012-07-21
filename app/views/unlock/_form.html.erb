@@ -3,14 +3,14 @@
         <div id="five_exp">
         <% unless @email.errors.blank? %>
           <% @email.errors.each do |attr, msg| %>
-            <%= attr %> - <%= msg %><br>  
+            <%= ExtracksEmail.human_attribute_name(attr) %> - <%= msg %><br>  
           <% end %>
         <% end %>
-        Enter your email address, and next we'll give you a link to give to your friends. </div>
-        <%= form_for :five, :html => { :id => 'five_form' }, :url => '/unlock/email' do |f| %>
-          Your email: <br/> 
+        <br>
+        Enter your email address:</div>
+        <%= form_for @email, :html => { :id => 'five_form' }, :url => '/unlock/email' do |f| %>
           <%= f.text_field 'email', :class =>  'message_us_inputs' %><br/>
           <br/>
-          <%= f.submit 'Message', :value => 'Send', :id => 'notified_btn', :onclick => 'do_notify(this);', :class => 'rounded_submit' %>
+          <%= f.submit 'Send Email', :value => 'Send', :id => 'ext_sendemail_btn', :class => 'rounded_submit' %>
         <% end %>
       </div>

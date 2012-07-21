@@ -20,6 +20,7 @@ class AlbumController < ApplicationController
     @album_name = vals[1] || "Album Name"
     @top_three = FanLocation.top_three
     @newest_three = FanLocation.newest_three
+    @email = ExtracksEmail.new
     respond_to do |format|
       format.html {
         render :show

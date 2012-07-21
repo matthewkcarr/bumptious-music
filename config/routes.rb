@@ -51,7 +51,13 @@ Bumptious::Application.routes.draw do
   resources :album do 
     resources :track
   end
+
   #root :to => "home#index"
+
+  match '/sweet-new-music-artist/:link_hash', :controller => 'unlock', :action => 'check_hash', :as => 'unlock_hash'
+
+  match '/from-new-album/:mp3_hash', :controller => 'unlock', :action => 'download_five', :as => 'download_five'
+
   root :to => "album#show", :id => '2'
 
   
