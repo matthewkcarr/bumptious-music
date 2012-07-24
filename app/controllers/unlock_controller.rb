@@ -58,6 +58,12 @@ class UnlockController < ApplicationController
     ip = "24.23.6.223" if ip == "127.0.0.1"
     @guser = Geokit::Geocoders::MultiGeocoder.geocode(ip)
     @fan_location = FanLocation.new(:city => @guser.city, :state => @guser.state, :country_code => @guser.country_code, :ip_address => ip)
+    if @fan_location.state.nil?
+      @fan_location.state = @fan_location.country_code
+    end
+    if @fan_location.nil? or @fan_location.city.nil?
+      @fan_location = FanLocation.new(:city => 'Luxembourg', :state => 'EU', :country_code => 'EU', :ip_address => ip)
+    end
     @fan_location.save
     @top_three = FanLocation.top_three
     ret = Array.new
