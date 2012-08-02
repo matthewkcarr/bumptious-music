@@ -120,7 +120,9 @@ img.album {
 #track_seperator {
     padding-top: 15px;
 }
-
+.agency-header {
+  letter-spacing: 0.2em;
+}
 .track {
   padding-bottom: 40px;
 }
@@ -239,7 +241,7 @@ img.album {
 }
 #broad_sbam {
   font-size: 14pt;
-  letter-spacing: 0.52em;
+  letter-spacing: 0.22em;
   padding-left: 20px;
 }
 #sbam_btn {

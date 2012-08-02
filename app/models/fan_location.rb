@@ -9,11 +9,17 @@ class FanLocation < ActiveRecord::Base
       #retarry.reverse
       if retarry.size == 3
         for i in 0..2
-          occ = retarry[i]['occurences']
-          rval[i]['occurences'] = occ
-          rval[i]['updated'] = rval[i].created_at.strftime("%m/%d/%Y") 
+          for j in 0..2
+            if rval[i]['city'] == retarry[j]['city']
+              rval[i]['occurences'] = retarry[j]['occurences']
+              rval[i]['updated'] = rval[j].created_at.strftime("%m/%d/%Y") 
+            end
+          end
         end
       end
+    end
+    for i in 0..2
+      puts 'city is ' + rval[i]['city']
     end
     if rval.size < 3
       rval[0] = FanLocation.new(:city => "San Francisco", :state => "CA", :country_code => "US", :updated => Time.now.strftime("%m%d%Y"))

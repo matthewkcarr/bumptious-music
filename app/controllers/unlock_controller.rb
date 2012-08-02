@@ -55,7 +55,7 @@ class UnlockController < ApplicationController
 
   def fan_shbam
     ip = request.remote_ip || "127.0.0.1"
-    ip = "24.23.6.223" if ip == "127.0.0.1"
+    ip = "66.249.73.18" if ip == "127.0.0.1"
     @guser = Geokit::Geocoders::MultiGeocoder.geocode(ip)
     @fan_location = FanLocation.new(:city => @guser.city, :state => @guser.state, :country_code => @guser.country_code, :ip_address => ip)
     if @fan_location.state.nil?
@@ -82,7 +82,7 @@ class UnlockController < ApplicationController
   end
 
   def new_fan_shbam
-    @newest_three = FanLocation.top_three
+    @newest_three = FanLocation.newest_three
     ret = Array.new
     i = 0
     @newest_three.each do |n| 

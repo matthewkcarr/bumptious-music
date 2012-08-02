@@ -65,6 +65,7 @@
   }
 
   function shbam() {
+    console.log('shbam called');
     $('#shbam_container').html('');
     $('#shbam_container').append( $('#preload').html() );
     $.getJSON('/unlock/fan_shbam', function(data) {
@@ -73,20 +74,32 @@
           var hash = data[i] ;
           var subhash = hash.fan_location;
           $('#location_' + i).html( subhash.city + ", " + subhash.state);
+          console.log( subhash.city + ", " + subhash.state);
           $('#stats_' + i).html( "(x" + subhash.occurences + ")");
+          console.log( "(x" + subhash.occurences + ")");
         }
       }
+      update_newest(); 
     });
-    $.getJSON('/unlock/new_fan_shbam', function(data) {
-      for (var i=0; i < data.length; i++) {
-        if(data[i] != null) {
-          var hash = data[i] ;
-          var subhash = hash.fan_location;
-          $('#nlocation_' + i).html( subhash.city + ", " + subhash.state);
-          $('#nstats_' + i).html( "(x" + subhash.occurences + ") - " + subhash.updated);
+  }
+    
+  function update_newest() {
+    $.getJSON('/unlock/new_fan_shbam', function(ndata) {
+      console.log('length is ' + ndata.length);
+      for (var j=0; j < ndata.length; j++) {
+        if(ndata[j] != null) {
+          var nhash = ndata[j] ;
+          var nsubhash = nhash.fan_location;
+          $('#nlocation_' + j).html( nsubhash.city + ", " + nsubhash.state);
+          console.log( nsubhash.city + ", " + nsubhash.state);
+          $('#nstats_' + j).html( "(x" + nsubhash.occurences + ") - " + nsubhash.updated);
+          console.log( "(x" + nsubhash.occurences + ") - " + nsubhash.updated);
         }
       }
+      //$('#location_hits').animate({backgroundColor: '#FFFFFF'})
+      //$('#location_hits').animate({backgroundColor: '#000000'})
     });
+  }
     /*$.ajax( {
            url: '/unlock/fivemore', 
            complete: function(data) { 
@@ -94,7 +107,6 @@
                     }
           });
           */
-  }
   function update_counts() {
     $.getJSON('/home/counts', function(data) {
       for (var key in data) {
@@ -262,7 +274,7 @@
     </div>
 
     <div id="shbam_container">
-      <div id="broad_sbam" class="broadway">Like what you hear?</div>
+      <div id="broad_sbam" class="agency">LIKE WHAT YOU HEAR?</div>
       <div id="bam_btn_container"><img src="/images/sbam_btn.png" id="sbam_btn"></div>
     </div>
 
@@ -279,13 +291,13 @@
       </div>
     </div>
     <div id="location_hits">
-      <p class="broadway">Currently being bumped in:</p>
+      <p class="agency">CURENTLY BEING BUMPED IN:</p>
       <% i = 0 %>
       <% for newest in @newest_three %>
-        <div id="nlocation_0" class="gemstone location <%= "loc_highlight" if i == 0 %>">
+        <div id="nlocation_<%= i %>" class="gemstone location <%= "loc_highlight" if i == 0 %>">
           <%= newest.city + ", " + newest.state %>
         </div>
-        <div id="nstats_0" class="stats gemstone">
+        <div id="nstats_<%= i %>" class="stats gemstone">
           <%= "(x" + newest.occurences.to_s + ") - " + newest.updated %>
         </div>
         <% i += 1 %>
@@ -337,14 +349,14 @@
   </div>
 
   <div id="city_leaderboard">
-    <p class="broadway">City Rankings</p>
+    <p class="agency">CITY RANKINGS</p>
     <% i = 0 %>
     <% for top in @top_three %>
       <div class="ccont">
-        <div id="stats_0" class="cstats gemstone">
+        <div id="stats_<%= i %>" class="cstats gemstone">
           <%= "(x" + top.occurences.to_s + ")" %>
         </div>
-        <div id="location_0" class="gemstone clocation <%= "loc_highlight" if i == 0 %>">
+        <div id="location_<%= i %>" class="gemstone clocation <%= "loc_highlight" if i == 0 %>">
           <%= top.city + ", " + top.state %>
         </div>
       </div>
