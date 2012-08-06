@@ -18,9 +18,6 @@ class FanLocation < ActiveRecord::Base
         end
       end
     end
-    for i in 0..2
-      puts 'city is ' + rval[i]['city']
-    end
     if rval.size < 3
       rval[0] = FanLocation.new(:city => "San Francisco", :state => "CA", :country_code => "US", :updated => Time.now.strftime("%m%d%Y"))
       rval[1] = FanLocation.new(:city => "Los Angeles", :state => "CA", :country_code => "US", :updated  => Time.now.strftime("%m%d%Y"))
