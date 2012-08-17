@@ -332,3 +332,11 @@ form input:focus {
   border: 3px solid #d20ad0;
   outline: none; 
 }
+#kill_bad_guys {
+  width:451px;
+  margin: 0 auto;
+  padding-bottom: 70px;
+}
+#kill_bad_guys {
+  cursor: pointer;
+}

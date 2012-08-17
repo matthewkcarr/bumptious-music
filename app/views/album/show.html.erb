@@ -181,6 +181,21 @@
       });
     });
 
+    $('#kill_bad_guys_btn').click(function(){
+      $("#games_fuzz").css("height", $(document).height()); 
+      $("#games_fuzz").fadeIn();  
+      $('#games_container').center();
+      window.open('/pgames/bscorp/index.html', 'Bumptious Sponsered Games', '');
+      /*$('#games_container').css('top', '0px');
+      $('#games_container').css('left', '0px');
+      */
+      return false;
+    });
+
+    $("#games_close").click(function(){  
+      $("#games_fuzz").fadeOut();  
+      return false;  
+    }); 
 
     $("#about_us_link").click(function(){  
       $("#about_us_fuzz").css("height", $(document).height()); 
@@ -348,6 +363,12 @@
     <% end %>
   </div>
 
+  <div id="games">
+    <div id="kill_bad_guys">
+      <img id="kill_bad_guys_btn" src="/images/kill_bad_guys.png">
+    </div>
+  </div>
+
   <div id="city_leaderboard">
     <p class="agency">CITY RANKINGS</p>
     <% i = 0 %>
@@ -363,6 +384,7 @@
       <% i += 1 %>
     <% end %>
   </div>
+
 
   <ul id="myGallery">
         <% for artpic in AlbumController::ART_PICS %>
@@ -394,6 +416,14 @@
   </div>
 </div>
 
+<div id="games_fuzz" class="fuzz">  
+  <div id="games_container">
+    <a id="games_close" class="close" href="" >Done with the game</a>  
+    <% # render :partial => 'games/cron' %>
+  </div>
+</div>
+
+</div>
 <div id="message_us_fuzz" class="fuzz">  
   <div id="message_us_cont" style="background-color:#d20ad0; padding:5px" class="msgbox rounded">
     <div style="background-color:#272727; padding:1px" class="rounded gemstone">
