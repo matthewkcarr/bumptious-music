@@ -5,3 +5,9 @@ require File.expand_path('../config/application', __FILE__)
 require 'rake'
 
 Bumptious::Application.load_tasks
+begin require 'vlad'
+  Vlad.load
+rescue LoadError
+  #do nothing
+end
+
