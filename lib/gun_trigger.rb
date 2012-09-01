@@ -98,7 +98,7 @@ class GunTrigger
 
   def checkout_code(rlocation, sfolder)
     system "mkdir #{rlocation}/#{sfolder} "
-    cmd = "cd " + rlocation + ";git clone " + @machine[:repository] + ' ' + sfolder
+    cmd = "cd " + rlocation + ";git clone --recursive " + @machine[:repository] + ' ' + sfolder
     puts "+++ Running " + cmd
     system(cmd)
   end
