@@ -1,0 +1,3 @@
+[submodule "public/pgames/bscorp"]
+	path = public/pgames/bscorp
+	url = https://github.com/bikokid/cron.git
