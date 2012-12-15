@@ -1,10 +1,10 @@
-<% content_for :artist do-%>
+<% content_for :artist do -%>
 <%= @artist.upcase %>
 <% end  %>
-<% content_for :album do-%>
+<% content_for :album do -%>
 <%= @album_name.upcase %>
 <% end  %>
-<% content_for :meta do-%>
+<% content_for :meta do -%>
     <% if @album.album_number == 2 %>
       <meta name="title" content="BUMPTIOUS - REMIX ELIXIRS" />
       <meta name="description" content="sweet delicious beats" />
@@ -326,6 +326,17 @@
   <div id="head_seperator">
   </div>
 
+  <% if @album.cc_license %>
+    <div id="cc">
+      <div id="cc_image">
+        <a rel="license" href="http://creativecommons.org/licenses/by/3.0/deed.en_US"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by/3.0/88x31.png" /></a>
+      </div>
+      <div id="cc_errata">
+        <span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Sound" property="dct:title" rel="dct:type">The Tares Destroyer</span> by <a xmlns:cc="http://creativecommons.org/ns#" href="http://bumptiousmusic.com/album/1-Bumptious-The-Tares-Destroyer" property="cc:attributionName" rel="cc:attributionURL">Bumptious</a> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/3.0/deed.en_US">Creative Commons Attribution 3.0 Unported License</a>.<br />Based on a work at <a xmlns:dct="http://purl.org/dc/terms/" href="http://bumptiousmusic.com/album/1-Bumptious-The-Tares-Destroyer" rel="dct:source">http://bumptiousmusic.com</a>
+      </div>
+    </div>
+  <% end %>
+
   <div id="headers" class="broadway">
     <div class="header" id="header_tnum">
       Track
@@ -481,7 +492,7 @@
           <br><a href="http://twitter.com/matthewkcarr">http://twitter.com/matthewkcarr</a>
           <br>
           <br>Or you can just email me at:
-          <br>matt@bumptiousmusic.com
+          <br>bikokid@gmail.com
           <br>
           <br>
         </div>

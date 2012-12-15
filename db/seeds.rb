@@ -44,3 +44,7 @@ unless elixirs
   Track.create(:name => 'Mobb Deep - Drop a gem on \'em', :local_name => 'mobb_deep', :album => a, :track_number => 13)
   Track.create(:name => 'Fam Lay ft. Pharrell - Da Beeper', :local_name => 'famlay', :album => a, :track_number => 14)
 end
+unless tares.cc_license
+  tares.cc_license = true
+  tares.save
+end

@@ -340,3 +340,16 @@ form input:focus {
 #kill_bad_guys {
   cursor: pointer;
 }
+#cc {
+}
+#cc_image {
+  padding-right: 118px;
+  text-align: right;
+}
+#cc_errata {
+  font-size: 10px;
+  margin: 10px 0 10px auto;
+  padding-right: 38px;
+  text-align: right;
+  width: 245px;
+}

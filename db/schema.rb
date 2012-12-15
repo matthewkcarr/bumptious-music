@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120721202752) do
+ActiveRecord::Schema.define(:version => 20121215060442) do
 
   create_table "albums", :force => true do |t|
     t.string   "name"
@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(:version => 20120721202752) do
     t.integer  "album_number"
     t.integer  "mp3_size",     :default => 0
     t.integer  "m4a_size",     :default => 0
+    t.boolean  "cc_license",   :default => false
   end
 
   create_table "extracks_emails", :force => true do |t|
