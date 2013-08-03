@@ -62,14 +62,4 @@ ActiveRecord::Schema.define(:version => 20121215060442) do
     t.integer  "track_number"
   end
 
-  create_table "tracks_email", :force => true do |t|
-    t.string   "email",      :default => ""
-    t.string   "link_hash",  :default => "0"
-    t.string   "mp3_hash",   :default => "0"
-    t.integer  "visited_by", :default => 0
-    t.string   "origin_ip",  :default => "0"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
 end
